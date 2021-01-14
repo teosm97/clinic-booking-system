@@ -13,34 +13,34 @@
 <form action="signup.php" method="post">
 	<div class="sucontainer">
 		<label><b>Name:</b></label><br>
-		<input type="text" placeholder="Enter Full Name" name="fname" required><br>
+		<input type="text" placeholder="Enter Full Name" name="fname" minlength="10" maxlength="45" pattern="[A-Za-z\s]{10,45}" required><br>
 	
 		<label><b>Date of Birth:</b></label><br>
 		<input type="date" name="dob" required><br><br>
 	
-		<label><b>Gender</b></label><br>
-		<input type="radio" name="gender" value="female">Female
+		<label><b>Gender:</b></label><br>
 		<input type="radio" name="gender" value="male">Male
-		<input type="radio" name="gender" value="other">Other<br><br>
+		<input type="radio" name="gender" value="female">Female
+		<br><br>
 		
 		<label><b>Contact No:</b></label><br>
-		<input type="number" placeholder="Contact Number" name="contact" required><br>
+		<input type="text" placeholder="Contact Number (e.g. 019*******)" name="contact" minlength="9" maxlength="12" pattern="[0-9]{9,12}" required><br>
 		
 		<label><b>Username:</b></label><br>
-		<input type="text" placeholder="Create Username" name="username" required><br>
+		<input type="text" placeholder="Create Username" name="username" minlength="4" maxlength="10" required><br>
 		
 		<label><b>Email:</b></label><br>
 		<input type="email" placeholder="Enter Email" name="email" required><br>
 
 		<label><b>Password:</b></label><br>
-		<input type="password" placeholder="Enter Password" name="pwd" id="p1" required><br>
+		<input type="password" placeholder="Enter Password" name="pwd" id="p1" minlength="4" maxlength="12" required><br>
 
 		<label><b>Repeat Password:</b></label><br>
 		<input type="password" placeholder="Repeat Password" name="pwdr" id="p2" required><br>
-		<p style="color:white">By creating an account you agree to our <a href="#" style="color:blue">Terms & Conditions</a>.</p><br>
+		<p style="color:white">By creating an account, you agree to our <a href="#" style="color:blue">Terms & Conditions</a>.</p><br>
 
 		<div class="container" style="background-color:grey">
-			<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+			<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn"><a href="cover.php">Cancel</a></button>
 			<button type="submit" name="signup" style="float:right">Sign Up</button>
 		</div>
   </div>
@@ -73,7 +73,7 @@ function newUser()
 function checkusername()
 {
 	include 'dbconfig.php';
-	$usn=$_POST['username'];
+	$username=$_POST['username'];
 	$sql= "SELECT * FROM Patient WHERE Username = '$username'";
 
 	$result=mysqli_query($conn,$sql);
