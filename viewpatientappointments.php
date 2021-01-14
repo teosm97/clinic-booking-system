@@ -27,7 +27,7 @@ tr,td{
 <body style="background-image:url(images/cancelback.jpg)">
 <div class="header">
 				<ul>
-					<li style="float:left;border-right:none"><strong><?php session_start(); echo $_SESSION['user']; ?></strong></li>
+					<li style="float:left;border-right:none"><strong><?php session_start(); echo $_SESSION['username']; ?></strong></li>
 					<li><a href="ulogin.php">Home</a></li>
 				</ul>
 </div>

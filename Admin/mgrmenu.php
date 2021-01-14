@@ -5,7 +5,7 @@
 <body style="background-image:url(mgrchange.jpg)">
 <div class="header">
 				<ul>
-					<li style="float:left;border-right:none"><strong><?php session_start(); echo $_SESSION['mgrname']; ?></strong></li>
+					<li style="float:left;border-right:none"><strong><?php session_start(); echo $_SESSION['username']; ?></strong></li>
 					<li><a href="mgrmenu.php">Home</a></li>
 				</ul>
 </div>

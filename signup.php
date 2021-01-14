@@ -57,9 +57,9 @@ function newUser()
 		$username=$_POST['username'];
 		$password=$_POST['pwd'];
 		$prepeat=$_POST['pwdr'];
-		$sql = "INSERT INTO Patient (Name, Gender, DOB,Contact,Email,Username,Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$password') ";
+		$sql = "INSERT INTO Patient (Name, Gender, DOB, Contact, Email, Username, Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$password');INSERT INTO user (Username,Password,Role) VALUES ('$username','$password','1')";
 
-	if (mysqli_query($conn, $sql)) 
+	if (mysqli_multi_query($conn, $sql)) 
 	{
 		echo "<h2>Record created successfully!! Redirecting to login page....</h2>";
 		header( "Refresh:3; url=cover.php");
@@ -74,7 +74,7 @@ function checkusername()
 {
 	include 'dbconfig.php';
 	$usn=$_POST['username'];
-	$sql= "SELECT * FROM Patient WHERE Username = '$username'";
+	$sql= "SELECT * FROM Patient WHERE Username = '$usn'";
 
 	$result=mysqli_query($conn,$sql);
 
