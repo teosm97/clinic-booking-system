@@ -7,7 +7,7 @@
 <script type="text/javascript">//alert("sdfsd");</script>
 <body>
 <?php
-require_once("dbconfig.php");
+require_once("../dbconfig.php");
 	$query ="SELECT * FROM manager_clinic WHERE CID =".$_POST["cid"];
 	$results = $conn->query($query);
 ?>

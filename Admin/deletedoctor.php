@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "doctordesk.jpg">
+<body background= "../images/doctordesk.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -53,7 +53,7 @@ Enter DID:<center><input type="number" name="did"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
 			<br>---------OR---------<br>
 Select Name:<br><?php
-				require_once('dbconfig.php');
+				require_once('../dbconfig.php');
 				$doctor_result = $conn->query('select * from doctor order by DID ASC');
 				?>
 				<center>
@@ -73,8 +73,8 @@ Select Name:<br><?php
 				<button type="submit" name="Submit2">Delete by Name</button>
 </form>			
 <?php
+include '../dbconfig.php';
 session_start();
-include 'dbconfig.php';
 if(isset($_POST['Submit1']))
 {
 	$did=$_POST['did'];
@@ -127,7 +127,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>			
 </body>

@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "managerview.jpg">
+<body background= "../images/bookback.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -53,7 +53,7 @@ Enter MID:<center><input type="number" name="mid"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
 			<br>---------OR---------<br>
 Select Name:<br><?php
-				require_once('dbconfig.php');
+				require_once('../dbconfig.php');
 				$manager_result = $conn->query('select * from manager order by MID ASC');
 				?>
 				<center>
@@ -74,7 +74,7 @@ Select Name:<br><?php
 </form>			
 <?php
 session_start();
-include 'dbconfig.php';
+include '../dbconfig.php';
 if(isset($_POST['Submit1']))
 {
 	$mid=$_POST['mid'];
@@ -133,7 +133,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>			
 </body>

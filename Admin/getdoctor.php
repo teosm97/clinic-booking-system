@@ -7,7 +7,7 @@
 <script type="text/javascript">//alert("sdfsd");</script>
 <body>
 <?php
-require_once("dbconfig.php");
+require_once("../dbconfig.php");
 	$query ="SELECT distinct DID FROM doctor_availability WHERE CID = '" . $_POST["cid"] . "'";
 	$results = $conn->query($query);
 ?>

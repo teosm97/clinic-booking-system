@@ -26,7 +26,7 @@ function getDoctorday(val) {
 
 </script>
 </head>
-<body background= "clinicview.jpg">
+<body background= "../images/clinicview.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -75,7 +75,7 @@ function getDoctorday(val) {
 		<select name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);">
 		<option value="">Select City</option>
 		<?php
-		include 'dbconfig.php';
+		include '../dbconfig.php';
 		$sql1="SELECT distinct City FROM clinic";
          $results=$conn->query($sql1); 
 		while($rs=$results->fetch_assoc()) { 
@@ -102,7 +102,7 @@ function getDoctorday(val) {
 	</form>
 <?php
 session_start();
-include 'dbconfig.php';
+include '../dbconfig.php';
 if(isset($_POST['Submit']))
 {
 	$cid=$_POST['clinic'];
@@ -124,7 +124,7 @@ if(isset($_POST['Submit']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>			
 

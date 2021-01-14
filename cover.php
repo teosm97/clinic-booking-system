@@ -34,6 +34,7 @@
 			<option value="1">Patient</option>
 			<option value="2">Manager</option>
 			<option value="3">Admin</option>
+			<option value="4">Doctor</option>
 	  </select>
 		
 		<div style ="margin-top:15px">
@@ -115,10 +116,11 @@ else
 	if ($num == 1) {
 		$_SESSION['username']=$rows['username'];
 		if($role == 1){
-			header( "Refresh:1; url=ulogin.php"); 
+			header( "Refresh:1; url=patient/ulogin.php"); 
 		}
-		elseif($role == 2){
-			header( "Refresh:1; url=admin/mgrmenu.php"); 
+		elseif($role == 2){		
+			$_SESSION['mgrid']=1;
+			header( "Refresh:1; url=manager/mgrmenu.php"); 
 		}
 		else{
 			header( "Refresh:1; url=admin/mainpage.php"); 
