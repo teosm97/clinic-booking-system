@@ -2,7 +2,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "doctordesk.jpg">
+<body background= "../images/doctordesk.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -81,11 +81,11 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 function newUser()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 		$did=$_POST['did'];
 		$name=$_POST['name'];
 		$gender=$_POST['gender'];
@@ -97,9 +97,9 @@ function newUser()
 		$username=$_POST['username'];
 		$password=$_POST['pwd'];
 		$region=$_POST['region'];
-		$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region') ";
+		$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
 
-	if (mysqli_query($conn, $sql)) 
+	if (mysqli_multi_query($conn, $sql)) 
 	{
 		echo "<h2>Record created successfully!! Redirecting to Admin mainpage page....</h2>";
 		header( "Refresh:3; url=adddoctor.php");
@@ -112,7 +112,7 @@ function newUser()
 }
 function checkdid()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 	$did=$_POST['did'];
 	$sql= "SELECT * FROM doctor WHERE DID = '$did'";
 
@@ -132,7 +132,7 @@ function checkdid()
 }
 function checkusername()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 	$usn=$_POST['username'];
 	$sql= "SELECT * FROM doctor WHERE Username = '$usn'";
 

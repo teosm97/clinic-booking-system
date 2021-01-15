@@ -2,7 +2,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "managerview.jpg">
+<body background= "../images/bookback.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -80,7 +80,7 @@ if(isset($_POST['logout'])){
 	}
 function newUser()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 		$mid=$_POST['mid'];
 		$name=$_POST['name'];
 		$gender=$_POST['gender'];
@@ -105,7 +105,7 @@ function newUser()
 }
 function checkmid()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 	$mid=$_POST['mid'];
 	$sql= "SELECT * FROM manager WHERE MID = '$mid'";
 
@@ -125,7 +125,7 @@ function checkmid()
 }
 function checkusername()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 	$usn=$_POST['username'];
 	$sql= "SELECT * FROM manager WHERE Username = '$usn'";
 

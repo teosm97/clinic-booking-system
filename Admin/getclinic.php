@@ -7,7 +7,7 @@
 <script type="text/javascript">//alert("sdfsd");</script>
 <body>
 <?php
-require_once("dbconfig.php");
+require_once("../dbconfig.php");
 	$query ="SELECT * FROM clinic WHERE City = '" . $_POST["city"] . "'";
 	$results = $conn->query($query);
 ?>

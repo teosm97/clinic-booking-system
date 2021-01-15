@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2017 at 05:53 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Jan 14, 2021 at 09:33 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,7 +44,9 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`Username`, `Fname`, `Gender`, `CID`, `DID`, `DOV`, `Timestamp`, `Status`) VALUES
-('user', 'patient', 'male', 1, 1, '2017-11-08', '2017-11-05 16:43:48', 'Booking Registered.Wait for the update');
+('user', 'patient', 'male', 1, 1, '2017-11-08', '2017-11-05 16:43:48', 'Booking Registered.Wait for the update'),
+('user', 'saya', 'female', 1, 1, '2021-01-21', '2021-01-14 19:24:41', 'Cancelled by Patient'),
+('silz', 'asilah', 'female', 1, 1, '2021-01-21', '2021-01-14 20:52:53', 'Booking Registered.Wait for the update');
 
 -- --------------------------------------------------------
 
@@ -65,7 +69,8 @@ CREATE TABLE `clinic` (
 --
 
 INSERT INTO `clinic` (`cid`, `name`, `address`, `town`, `city`, `contact`, `mid`) VALUES
-(1, 'Clinic', 'XYZ apartment, CST', 'CST', 'Mumbai', 9999988888, '1');
+(1, 'Clinic', 'XYZ apartment, CST', 'CST', 'Mumbai', 9999988888, '1'),
+(2, 'Klinik Pelangi', '49 Jalan Lembah 4', 'Bandar Seri Alam', 'Masai', 1110742106, '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +97,8 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`did`, `name`, `gender`, `dob`, `experience`, `specialization`, `contact`, `address`, `username`, `password`, `region`) VALUES
-(1, 'doctor', 'male', '1980-01-01', 10, 'Orthodontist', 9999999999, 'XYZ tower, CST', 'doctor', 'doctor', 'Mumbai');
+(1, 'doctor', 'male', '1980-01-01', 10, 'Orthodontist', 9999999999, 'XYZ tower, CST', 'doctor', 'doctor', 'Mumbai'),
+(2, 'asilah', 'female', '2018-07-13', 10, 'hahahaha', 1110742106, '49 Jalan Lembah 4, Bandar Seri Alam', 'silz', '1234567890', 'Johor');
 
 -- --------------------------------------------------------
 
@@ -183,7 +189,33 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`name`, `gender`, `dob`, `contact`, `email`, `username`, `password`) VALUES
-('user', 'male', '1985-01-01', 7897897897, 'user@test.com', 'user', 'user');
+('user', 'male', '1985-01-01', 7897897897, 'user@test.com', 'user', 'user'),
+('amirah', 'female', '2021-01-23', 110742106, 'amirahrozey@gmail.com', 'amirahhhh', '1234567890'),
+('shahira', 'female', '2021-01-01', 110982921, 'sheraax1998@gmail.com', 'sheralol', '1234567890');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
+(1, 'silz', '1234567890', 1),
+(2, 'admin', '1234567890', 3),
+(3, 'manager', '1234567890', 2),
+(4, 'amirahhhh', '1234567890', 1),
+(5, 'sheralol', '1234567890', 1);
 
 --
 -- Indexes for dumped tables
@@ -230,6 +262,24 @@ ALTER TABLE `manager_clinic`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`email`,`username`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

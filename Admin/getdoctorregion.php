@@ -7,7 +7,7 @@
 <script type="text/javascript"></script>
 <body>
 <?php
-require_once("dbconfig.php");
+require_once("../dbconfig.php");
 	$query1 ="SELECT * FROM doctor where UPPER(region) like UPPER('%".$_POST["city"]."%')";
 	$results1 = $conn->query($query1);
 ?>

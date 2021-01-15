@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "doctordesk.jpg">
+<body background= "../images/doctordesk.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -70,14 +70,10 @@ tr,td{
 </h2>
 <center><h1>SHOW DOCTOR SCHEDULE</h1><hr>
 <?php
+include '../dbconfig.php';
 session_start();
-$con = mysqli_connect('localhost','root','','wt_database');
-if (!$con)
-{
-    die('Could not connect: ' . mysqli_error($con));
-}
 $sql="SELECT * FROM doctor_availability order by DID,CID ASC";
-$result = mysqli_query($con,$sql);
+$result = mysqli_query($conn,$sql);
 echo "<br><h2>TOTAL CLINICS IN DATABASE=<b>".mysqli_num_rows($result)."</b></h2><br>";
 echo "<table>
 <tr>
@@ -91,11 +87,11 @@ echo "<table>
 while($row = mysqli_fetch_array($result))
 {
 	$sql1="SELECT * from doctor where DID=".$row["did"];
-	$result1= mysqli_query($con,$sql1);
+	$result1= mysqli_query($conn,$sql1);
 	while($row1= mysqli_fetch_array($result1))
 	{
 	$sql2="SELECT * from clinic where CID=".$row["cid"];
-	$result2= mysqli_query($con,$sql2);
+	$result2= mysqli_query($conn,$sql2);
 	while($row2= mysqli_fetch_array($result2))
 	{
     echo "<tr>";
@@ -110,11 +106,11 @@ while($row = mysqli_fetch_array($result))
 	}
 }
 echo "</table>";
-mysqli_close($con);
+mysqli_close($conn);
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>
 </body>
