@@ -1,0 +1,10 @@
+{
+    "name": "php/clinicsystem",
+    "authors": [
+        {
+            "name": "Amirah",
+            "email": "amirahrozey@gmail.com"
+        }
+    ],
+    "require": {}
+}
