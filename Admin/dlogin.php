@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<body style="background-image:url(doctordesk.jpg)">
-<link rel="stylesheet" href="main.css">
+<body style="background-image:url(../images/doctordesk.jpg)">
+<link rel="stylesheet" href="../main.css">
 	<form action="dlogin.php" method="post">
 	<div class="header">
 				<ul>
@@ -22,7 +22,7 @@
 <?php 
 function SignIn() 
 { 
-include 'dbconfig.php';
+include '../dbconfig.php';
 
 session_start();
 if(!empty($_POST['uname']))  

@@ -26,7 +26,7 @@ function getDoctorRegion(val) {
 
 </script>
 </head>
-<body background= "clinicview.jpg">
+<body background= "../images/clinicview.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -75,7 +75,7 @@ function getDoctorRegion(val) {
 		<select name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);getDoctorRegion(this.value);">
 		<option value="">Select City</option>
 		<?php
-		include 'dbconfig.php';
+		include '../dbconfig.php';
 		$sql1="SELECT distinct City FROM clinic";
          $results=$conn->query($sql1); 
 		while($rs=$results->fetch_assoc()) { 
@@ -119,11 +119,11 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 if(isset($_POST['Submit']))
 {
-		include 'dbconfig.php';
+		include '../dbconfig.php';
 		$cid=$_POST['clinic'];
 		$did=$_POST['doctor'];
 		$starttime=$_POST['starttime'];

@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "managerview.jpg">
+<body background= "../images/bookback.jpg">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -70,14 +70,10 @@ tr,td{
 </h2>
 <center><h1>SHOW MANAGER</h1><hr>
 <?php
+include '../dbconfig.php';
 session_start();
-$con = mysqli_connect('localhost','root','','wt_database');
-if (!$con)
-{
-    die('Could not connect: ' . mysqli_error($con));
-}
 $sql="SELECT * FROM manager order by MID ASC";
-$result = mysqli_query($con,$sql);
+$result = mysqli_query($conn,$sql);
 echo "<br><h2>TOTAL MANAGERS IN DATABASE=<b>".mysqli_num_rows($result)."</b></h2><br>";
 echo "<table>
 <tr>
@@ -99,11 +95,11 @@ while($row = mysqli_fetch_array($result)) {
     echo "</tr>";
 }
 echo "</table>";
-mysqli_close($con);
+mysqli_close($conn);
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>
 </body>

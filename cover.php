@@ -6,7 +6,6 @@
 				<ul>
 					<li style="float:left;border-right:none"><a href="cover.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
 					<li><a href="locateus.php">Locate Us</a></li>
-					<li><a href="#home">Home</a></li>
 				</ul>
 			</div>
 			<div class="center">
@@ -15,12 +14,7 @@
 				<button onclick="document.getElementById('id01').style.display='block'" style="position:absolute;top:50%;left:50%">Login</button>
 				
 			</div>	
-			<div class="footer">
-				<ul style="position:absolute;top:93%;background-color:black">
-					<li><a href="admin/alogin.php">Admin Login</a></li>
-					<li><a href="admin/mlogin.php">Manager Login</a></li>
-				</ul>
-			</div>
+
 <div id="id01" class="modal">
   
   <form class="modal-content animate" method="post" action="cover.php">
@@ -35,9 +29,20 @@
 
       <label><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" required>
+
+	  <select style ="margin-top:15px;height:30px" name="role" id="role">
+			<option value="1">Patient</option>
+			<option value="2">Manager</option>
+			<option value="3">Admin</option>
+			<option value="4">Doctor</option>
+	  </select>
+		
+		<div style ="margin-top:15px">
 		<button type="submit" name="login">Login</button>
 		
-      <input type="checkbox" checked="checked"> Remember me
+
+		<input type="checkbox" checked="checked"> Remember me
+		</div>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
@@ -103,19 +108,29 @@ else
 	include 'dbconfig.php';
 	$username=$_POST['uname'];
 	$password=$_POST['psw'];
+	$role = $_POST['role'];
 
-	$query = mysqli_query($conn,"select * from patient where password='$password' AND username='$username'");
+	$query = mysqli_query($conn,"SELECT * from user WHERE username='$username' AND role='$role'");
 	$rows = mysqli_fetch_assoc($query);
 	$num=mysqli_num_rows($query);
 	if ($num == 1) {
 		$_SESSION['username']=$rows['username'];
-		$_SESSION['user']=$rows['name'];
-		header( "Refresh:1; url=ulogin.php"); 
+		if($role == 1){
+			header( "Refresh:1; url=patient/ulogin.php"); 
+		}
+		elseif($role == 2){		
+			$_SESSION['mgrid']=1;
+			header( "Refresh:1; url=manager/mgrmenu.php"); 
+		}
+		else{
+			header( "Refresh:1; url=admin/mainpage.php"); 
+		}
 	} 
 	else 
 	{
 		$error = "Username or Password is invalid";
 	}
+
 	mysqli_close($conn); 
 }
 }

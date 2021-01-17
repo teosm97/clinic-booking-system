@@ -2,7 +2,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "clinicview.jpg" behavior="fixed">
+<body background= "../images/clinicview.jpg" behavior="fixed">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -68,11 +68,11 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../cover.php"); 
 	}
 function newclinic()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 		$cid=$_POST['cid'];
 		$name=$_POST['name'];
 		$town=$_POST['town'];
@@ -94,7 +94,7 @@ function newclinic()
 }
 function checkcid()
 {
-	include 'dbconfig.php';
+	include '../dbconfig.php';
 	$cid=$_POST['cid'];
 	$sql= "SELECT * FROM clinic WHERE cid = '$cid'";
 
