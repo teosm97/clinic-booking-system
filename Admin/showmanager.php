@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/bookback.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>

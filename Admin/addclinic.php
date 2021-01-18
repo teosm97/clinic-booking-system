@@ -2,7 +2,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "../images/clinicview.jpg" behavior="fixed">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -45,23 +45,48 @@
 	
 </ul>
 </h2>
-<center><h1>ADD CLINIC</h1><hr>
+
+<center><h1>ADD CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  CID:<input type="number" name="cid" required>
-  <br>
-  Name: <input type="text" name="name" required>
-  <br>
-  Address: <input type="text" name="address" required>
-  <br>
-  Town: <input type="text" name="town" required>
-  <br>
-  City: <input type="text" name="city" required>
-  <br>
-  Contact no.: <input type="number" name="contact" maxlength="10" minlength="10" required>
-  <br>
-  <button type="submit" name="Submit">REGISTER</button>
+	<label style="color:black"><b>CID: </b></label><br>
+		<input type="number" name="cid" required>
+	<br>
+
+	<label style="color:black"><b>Name: </b></label><br>
+    	<input type="text" placeholder="Enter Clinic Name" name="name" minlength="5" maxlength="45" required><br>
+  
+	<label style="color:black"><b>Address: </b></label><br>
+  		<input type="text" placeholder="Enter Address" name="address" required><br>
+
+	<label style="color:black"><b>Town: </b></label><br>
+  		<input type="text" placeholder="Enter Town" name="town" required><br>
+		  
+	<label style="color:black"><b>City: </b></label><br>
+		<select name="city" required>
+			<option selected disabled>Choose City</option>
+			<option value="Johor">Johor</option>
+			<option value="Kedah">Kedah</option>
+			<option value="Kelantan">Kelantan</option>
+			<option value="Malacca">Malacca</option>
+			<option value="Negeri Sembilan">Negeri Sembilan</option>
+			<option value="Pahang">Pahang</option>
+			<option value="Penang">Penang</option>
+			<option value="Perak">Perak</option>
+			<option value="Perlis">Perlis</option>
+			<option value="Sabah">Sabah</option>
+			<option value="Sarawak">Sarawak</option>
+			<option value="Selangor">Selangor</option>
+			<option value="Terengganu">Terengganu</option>
+			<option value="Kuala Lumpur">Kuala Lumpur</option>
+			<option value="Labuan">Labuan</option>
+			<option value="Putrajaya">Putrajaya</option>
+		</select><br>
+
+	<label style="color:black"><b>Contact No: </b></label><br>
+		<input type="text" placeholder="Contact Number (e.g. 019*******)" name="contact" minlength="9" maxlength="12" pattern="[0-9]{9,12}" required><br>
+
+  	<button type="submit" name="Submit">REGISTER</button>
 </form>
-</font></b>
 </center>
 <?php
 session_start();
@@ -83,9 +108,8 @@ function newclinic()
 
 	if (mysqli_query($conn, $sql)) 
 	{
-		echo "<h2>Record created successfully!! Redirecting to Admin mainpage page....</h2>";
-		header( "Refresh:3; url=addclinic.php");
-
+		echo '<script>alert("Record created successfully!! Refreshing....");
+		window.location.href="addclinic.php";</script>';
 	} 
 	else
 	{
@@ -102,7 +126,7 @@ function checkcid()
 
 		if(mysqli_num_rows($result)!=0)
        {
-			echo"<b><br>CID already exists!!";
+		echo '<script>alert("CID already exists!")</script>';
        }
 	else 
 		if(isset($_POST['Submit']))
@@ -114,10 +138,11 @@ function checkcid()
 }
 if(isset($_POST['Submit']))
 {
-	if(!empty($_POST['cid'])&&!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact']))
+	if(!empty($_POST['cid'])&&!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact'])){
 			checkcid();
-	else
-		echo "EMPTY VALUES NOT ALLOWED";
+	} else {
+		echo '<script>alert("Please fill in all the columns!")</script>';
+	}
 }
 
 ?>
