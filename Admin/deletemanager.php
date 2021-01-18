@@ -46,12 +46,12 @@
 	
 </ul>
 </h2>
-<h1>
+<div class="container">
 <center><h1>DELETE MANAGER</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter MID:<center><input type="number" name="mid"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
-			<br>---------OR---------<br>
+			<br><br>---------OR---------<br><br>
 Select Name:<br><?php
 				require_once('../dbconfig.php');
 				$manager_result = $conn->query('select * from manager order by MID ASC');
@@ -71,7 +71,8 @@ Select Name:<br><?php
 				</select></center>
 				
 				<button type="submit" name="Submit2">Delete by Name</button>
-</form>			
+</form>		
+</div>	
 <?php
 session_start();
 include '../dbconfig.php';

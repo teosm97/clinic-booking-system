@@ -47,6 +47,7 @@
 </ul>
 </h2>
 <h1>
+<div class="container">
 <center><h1>DELETE CLINIC</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter CID:<center><input type="number" name="cid"></center>
@@ -71,7 +72,8 @@ Select Name:<br><?php
 				</select></center>
 				
 				<button type="submit" name="Submit2">Delete by Name</button>
-</form>			
+</form>	
+</div>		
 <?php
 
 include '../dbconfig.php';

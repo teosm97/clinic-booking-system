@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW DOCTOR SCHEDULE</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -113,5 +114,6 @@ if(isset($_POST['logout'])){
 		header( "Refresh:1; url=../cover.php"); 
 	}
 ?>
+</div>
 </body>
 </html>

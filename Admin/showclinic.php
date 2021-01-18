@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW CLINIC</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -104,5 +105,7 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 mysqli_close($conn);
 ?>
+</center>
+</div>
 </body>
 </html>

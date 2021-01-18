@@ -45,6 +45,7 @@
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>ADD DOCTOR</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   DID:<input type="number" name="did" required>
@@ -76,6 +77,7 @@
 </form>
 </font></b>
 </center>
+</div>
 <?php
 session_start();
 if(isset($_POST['logout'])){
