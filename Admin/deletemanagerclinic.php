@@ -69,6 +69,7 @@ function getManager(val) {
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>REMOVE MANAGER FROM A CLINIC</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
@@ -100,6 +101,7 @@ function getManager(val) {
 		
 		<button name="Submit" type="submit">Submit</button>
 	</form>
+	</div>
 <?php
 session_start();
 include '../dbconfig.php';

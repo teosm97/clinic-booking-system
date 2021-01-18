@@ -45,6 +45,7 @@
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>ADD CLINIC</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   CID:<input type="number" name="cid" required>
@@ -63,6 +64,7 @@
 </form>
 </font></b>
 </center>
+</div>
 <?php
 session_start();
 if(isset($_POST['logout'])){

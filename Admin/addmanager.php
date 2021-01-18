@@ -45,32 +45,35 @@
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>ADD MANAGER</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  MID:<input type="number" name="mid" required>
+  MID:<input type="number" name="mid" required style="width:300px">
   <br>
-  Name: <input type="text" name="name" required>
+  Name: <input type="text" name="name" required style="width:300px">
   <br>
   Gender:
   <input type="radio" name="gender" value="female">Female
   <input type="radio" name="gender" value="male">Male
   <br>
-  DOB: <input type="date" name="dob" required>
   <br>
-  Contact no.: <input type="number" name="contact" maxlength="10" minlength="10" required>
+  DOB: <input type="date" name="dob" required style="width:300px">
   <br>
-  Address: <input type="text" name="address" required>
+  Contact no.: <input type="number" name="contact" maxlength="10" minlength="10" required style="width:300px">
   <br>
-  Username: <input type="text" name="username" required>
+  Address: <input type="text" name="address" required style="width:300px">
   <br>
-  Password: <input type="password" name="pwd" required>
+  Username: <input type="text" name="username" required style="width:300px">
   <br>
-  Region: <input type="text" name="region" required>
+  Password: <input type="password" name="pwd" required style="width:300px">
+  <br>
+  Region: <input type="text" name="region" required style="width:300px">
   <br>
   <button type="submit" name="Submit">REGISTER</button>
 </form>
 </font></b>
 </center>
+</div>
 <?php
 session_start();
 if(isset($_POST['logout'])){

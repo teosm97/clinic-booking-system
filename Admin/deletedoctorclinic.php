@@ -69,6 +69,7 @@ function getDoctorday(val) {
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>REMOVE DOCTOR FROM A CLINIC</h1><hr>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
@@ -100,6 +101,7 @@ function getDoctorday(val) {
 		
 		<button name="Submit" type="submit">Submit</button>
 	</form>
+	</div>
 <?php
 session_start();
 include '../dbconfig.php';
@@ -111,12 +113,12 @@ if(isset($_POST['Submit']))
 
 	if (mysqli_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
+		$result = "Record deleted successfully.Refreshing....";
 		header( "Refresh:2; url=deletedoctorclinic.php");
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			$result =  "Error deleting record: " . mysqli_error($conn);
 		}
 
 }
