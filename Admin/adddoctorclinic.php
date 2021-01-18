@@ -71,7 +71,7 @@ function getDoctorRegion(val) {
 </h2>
 <br>
 <div class="container">
-<center><h1>ASSIGN DOCTOR TO A CLINIC</h1><hr>
+<center><h1>ASSIGN DOCTOR TO A CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
 
@@ -87,18 +87,18 @@ function getDoctorRegion(val) {
 		<?php
 		}
 		?>
-		</select>
+		</select><br>
         
 	
 		<label style="font-size:20px" >Clinic:</label>
 		<select  style="width:300px" id="clinic-list" name="clinic"  >
 		<option value="">Select Clinic</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >Doctor:</label>
 		<select style="width:300px" name="doctor" id="doctor-list">
 		<option value="">Select Doctor</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >
 		Available Days<br>
@@ -124,7 +124,7 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 if(isset($_POST['Submit']))
 {

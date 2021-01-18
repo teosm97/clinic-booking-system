@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "../images/doctordesk.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -48,7 +48,7 @@
 </h2>
 <h1>
 <div class="container">
-<center><h1>DELETE DOCTOR</h1><hr>
+<center><h1>DELETE DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter DID:<center><input type="number" name="did"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
@@ -129,7 +129,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>			
 </body>

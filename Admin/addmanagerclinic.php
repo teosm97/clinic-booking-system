@@ -26,7 +26,7 @@ function getManagerRegion(val) {
 
 </script>
 </head>
-<body background= "../images/clinicview.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -70,7 +70,7 @@ function getManagerRegion(val) {
 </ul>
 </h2>
 <div class="container">
-<center><h1>ASSIGN MANAGER TO A CLINIC</h1><hr>
+<center><h1>ASSIGN MANAGER TO A CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
 		<select name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);getManagerRegion(this.value);">
@@ -85,18 +85,18 @@ function getManagerRegion(val) {
 		<?php
 		}
 		?>
-		</select>
+		</select><br>
         
 	
 		<label style="font-size:20px" >Clinic:</label>
 		<select id="clinic-list" name="clinic" >
 		<option value="">Select Clinic</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >Manager:</label>
 		<select name="manager" id="manager-list">
 		<option value="">Select Manager</option>
-		</select>
+		</select><br>
 
 		<button name="Submit" type="submit">Submit</button>
 	</form>
@@ -106,7 +106,7 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=alogin.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 if(isset($_POST['Submit']))
 {

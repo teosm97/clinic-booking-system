@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/clinicview.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -76,7 +76,7 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 $sql="SELECT * FROM clinic order by City,Town,CID ASC";
 $result = mysqli_query($conn,$sql);

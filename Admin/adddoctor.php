@@ -2,7 +2,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "../images/doctordesk.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 205%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -45,122 +45,159 @@
 	
 </ul>
 </h2>
+
 <div class="container">
-<center><h1>ADD DOCTOR</h1><hr>
+<center><h1>ADD DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  DID:<input type="number" name="did" required>
-  <br>
-  Name: <input type="text" name="name" required>
-  <br>
-  Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
-  <br>
-  DOB: <input type="date" name="dob" required>
-  <br>
-  Experience: <input type ="number" name="experience" required>
-  <br>
-  Specialization:<input type="text" name="specialization" required>
-  <br>
-  Contact no.: <input type="number" name="contact" maxlength="10" minlength="10" required>
-  <br>
-  Address: <input type="text" name="address" required>
-  <br>
-  Username: <input type="text" name="username" required>
-  <br>
-  Password: <input type="password" name="pwd" required>
-  <br>
-  Region: <input type="text" name="region" required>
-  <br>
-  
-  <button type="submit" name="Submit">REGISTER</button>
+	<label style="color:black"><b>DID: </b></label><br>
+		<input type="number" name="did" required>
+	<br>
+
+	<label style="color:black"><b>Name: </b></label><br>
+    	<input type="text" placeholder="Enter Name" name="name" minlength="5" maxlength="45" required><br>
+
+	<label style="color:black"><b>Gender: </b></label><br>
+		<input type="radio" name="gender" value="male">Male
+		<input type="radio" name="gender" value="female">Female
+    <br><br>
+
+	<label style="color:black"><b>DOB: </b></label>
+		<input type="date" name="dob" required><br>
+	  
+	<label style="color:black"><b>Experience: </b></label>
+  		<input type ="number" placeholder="Enter Years of Experience" name="experience" required><br>
+	  
+	<label style="color:black"><b>Specialization: </b></label>
+		<select name="specialization" required>
+			<option selected disabled>Choose Specialization</option>
+			<option value="Allergists">Allergists</option>
+			<option value="Dermatologists">Dermatologists</option>
+			<option value="Ophthalmologist">Ophthalmologists</option>
+			<option value="OB/GYNs">Obstetrician/gynecologists (OB/GYNs)</option>
+			<option value="Cardiologists">Cardiologists</option>
+			<option value="Urologists">Urologists</option>
+			<option value="Pulmonologists">Pulmonologists</option>
+			<option value="ENT">Otolaryngologists (ENT)</option>
+			<option value="Neurologists">Neurologists</option>
+			<option value="Family Physician">Family Physician</option>
+		</select><br>
+
+	<label style="color:black"><b>Contact No: </b></label><br>
+		<input type="text" placeholder="Contact Number (e.g. 019*******)" name="contact" minlength="9" maxlength="12" pattern="[0-9]{9,12}" required><br>
+
+	<label style="color:black"><b>Address: </b></label><br>
+		<input type="text" placeholder="Enter Address" name="address" required>
+	<br>
+
+	<label style="color:black"><b>Region: </b></label><br>
+		<select name="region" required>
+			<option selected disabled>Choose Region</option>
+			<option value="Johor">Johor</option>
+			<option value="Kedah">Kedah</option>
+			<option value="Kelantan">Kelantan</option>
+			<option value="Malacca">Malacca</option>
+			<option value="Negeri Sembilan">Negeri Sembilan</option>
+			<option value="Pahang">Pahang</option>
+			<option value="Penang">Penang</option>
+			<option value="Perak">Perak</option>
+			<option value="Perlis">Perlis</option>
+			<option value="Sabah">Sabah</option>
+			<option value="Sarawak">Sarawak</option>
+			<option value="Selangor">Selangor</option>
+			<option value="Terengganu">Terengganu</option>
+			<option value="Kuala Lumpur">Kuala Lumpur</option>
+			<option value="Labuan">Labuan</option>
+			<option value="Putrajaya">Putrajaya</option>
+		</select><br>
+
+	<label style="color:black"><b>Username:</b></label><br>
+		<input type="text" placeholder="Create Username" name="username" minlength="4" maxlength="10" required><br>
+
+	<label style="color:black"><b>Password:</b></label><br>
+		<input type="password" placeholder="Enter Password" name="pwd" id="p1" minlength="4" maxlength="12" required><br>
+	
+	<button type="submit" name="Submit">REGISTER</button>
 </form>
 </font></b>
 </center>
 </div>
 <?php
-session_start();
-if(isset($_POST['logout'])){
-		session_unset();
-		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+	function newUser()
+	{
+		include '../dbconfig.php';
+			$did=$_POST['did'];
+			$name=$_POST['name'];
+			$gender=$_POST['gender'];
+			$dob=$_POST['dob'];
+			$experience=$_POST['experience'];
+			$specialization=$_POST['specialization'];
+			$contact=$_POST['contact'];
+			$address=$_POST['address'];
+			$username=$_POST['username'];
+			$password=$_POST['pwd'];
+			$region=$_POST['region'];
+			$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
+	
+		if (mysqli_multi_query($conn, $sql)) 
+		{
+			echo '<script>alert("Record created successfully!! Refreshing....");
+			window.location.href="adddoctor.php";</script>'; 
+		} 
+		else
+		{
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
 	}
-function newUser()
-{
-	include '../dbconfig.php';
+	function checkdid()
+	{
+		include '../dbconfig.php';
 		$did=$_POST['did'];
-		$name=$_POST['name'];
-		$gender=$_POST['gender'];
-		$dob=$_POST['dob'];
-		$experience=$_POST['experience'];
-		$specialization=$_POST['specialization'];
-		$contact=$_POST['contact'];
-		$address=$_POST['address'];
-		$username=$_POST['username'];
-		$password=$_POST['pwd'];
-		$region=$_POST['region'];
-		$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
-
-	if (mysqli_multi_query($conn, $sql)) 
-	{
-		echo "<h2>Record created successfully!! Redirecting to Admin mainpage page....</h2>";
-		header( "Refresh:3; url=adddoctor.php");
-
-	} 
-	else
-	{
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-}
-function checkdid()
-{
-	include '../dbconfig.php';
-	$did=$_POST['did'];
-	$sql= "SELECT * FROM doctor WHERE DID = '$did'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo"<b><br>DID already exists!!";
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		newUser();
-	}
-
+		$sql= "SELECT * FROM doctor WHERE DID = '$did'";
 	
-}
-function checkusername()
-{
-	include '../dbconfig.php';
-	$usn=$_POST['username'];
-	$sql= "SELECT * FROM doctor WHERE Username = '$usn'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo"<b><br>Username already exists!!";
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		checkdid();
-	}
-
+		$result=mysqli_query($conn,$sql);
 	
-}
-if(isset($_POST['Submit']))
-{
-	if(!empty($_POST['did']) && !empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact']))
-		checkusername();
-	else
-		echo "EMPTY VALUES NOT ALLOWED";
-}
-
-?>
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("DID already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			newUser();
+		}
+	
+		
+	}
+	function checkusername()
+	{
+		include '../dbconfig.php';
+		$usn=$_POST['username'];
+		$sql= "SELECT * FROM doctor WHERE Username = '$usn'";
+	
+		$result=mysqli_query($conn,$sql);
+	
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("Username already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			checkdid();
+		}
+	
+		
+	}
+	if(isset($_POST['Submit']))
+	{
+		if(!empty($_POST['did']) && !empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
+			checkusername();
+		} else {
+			echo '<script>alert("Please fill in all the columns!")</script>';
+		}
+	}
+	
+	?>
 
 </body>
 </html>
