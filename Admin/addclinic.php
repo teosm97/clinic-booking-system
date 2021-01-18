@@ -46,6 +46,7 @@
 </ul>
 </h2>
 
+<div class="container">
 <center><h1>ADD CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 	<label style="color:black"><b>CID: </b></label><br>
@@ -87,65 +88,68 @@
 
   	<button type="submit" name="Submit">REGISTER</button>
 </form>
+</font></b>
 </center>
+</div>
+
 <?php
 session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
-function newclinic()
-{
-	include '../dbconfig.php';
-		$cid=$_POST['cid'];
-		$name=$_POST['name'];
-		$town=$_POST['town'];
-		$city=$_POST['city'];
-		$contact=$_POST['contact'];
-		$address=$_POST['address'];
-		$sql = "INSERT INTO clinic (CID, Name, Address, Town, City, Contact, mid) VALUES ('$cid','$name','$address','$town','$city','$contact','')";
-
-	if (mysqli_query($conn, $sql)) 
+	function newclinic()
 	{
-		echo '<script>alert("Record created successfully!! Refreshing....");
-		window.location.href="addclinic.php";</script>';
-	} 
-	else
-	{
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-}
-function checkcid()
-{
-	include '../dbconfig.php';
-	$cid=$_POST['cid'];
-	$sql= "SELECT * FROM clinic WHERE cid = '$cid'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-		echo '<script>alert("CID already exists!")</script>';
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		newclinic();
-	}
-
+		include '../dbconfig.php';
+			$cid=$_POST['cid'];
+			$name=$_POST['name'];
+			$town=$_POST['town'];
+			$city=$_POST['city'];
+			$contact=$_POST['contact'];
+			$address=$_POST['address'];
+			$sql = "INSERT INTO clinic (CID, Name, Address, Town, City, Contact, mid) VALUES ('$cid','$name','$address','$town','$city','$contact','')";
 	
-}
-if(isset($_POST['Submit']))
-{
-	if(!empty($_POST['cid'])&&!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact'])){
-			checkcid();
-	} else {
-		echo '<script>alert("Please fill in all the columns!")</script>';
+		if (mysqli_query($conn, $sql)) 
+		{
+			echo '<script>alert("Record created successfully!! Refreshing....");
+			window.location.href="addclinic.php";</script>';
+		} 
+		else
+		{
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
 	}
-}
-
-?>
+	function checkcid()
+	{
+		include '../dbconfig.php';
+		$cid=$_POST['cid'];
+		$sql= "SELECT * FROM clinic WHERE cid = '$cid'";
+	
+		$result=mysqli_query($conn,$sql);
+	
+			if(mysqli_num_rows($result)!=0)
+		   {
+			echo '<script>alert("CID already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			newclinic();
+		}
+	
+		
+	}
+	if(isset($_POST['Submit']))
+	{
+		if(!empty($_POST['cid'])&&!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact'])){
+				checkcid();
+		} else {
+			echo '<script>alert("Please fill in all the columns!")</script>';
+		}
+	}
+	
+	?>
 
 </body>
 </html>

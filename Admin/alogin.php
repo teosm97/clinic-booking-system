@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
+<body style="background-image:url(doctordesk.jpg)">
 <link rel="stylesheet" href="main.css">
 	<form action="alogin.php" method="post">
 	<div class="header">

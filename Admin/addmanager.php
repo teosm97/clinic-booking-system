@@ -45,10 +45,10 @@
 	
 </ul>
 </h2>
-
+<div class="container">
 <center><h1>ADD MANAGER</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  <label style="color:black"><b>MID: </b></label><br>
+	<label style="color:black"><b>MID: </b></label><br>
     <input type="number" name="mid" required>
   <br>
 
@@ -100,89 +100,86 @@
 
   <button type="submit" name="Submit">REGISTER</button>
 </form>
+</font></b>
 </center>
+</div>
 <?php
-session_start();
-if(isset($_POST['logout'])){
-		session_unset();
-		session_destroy();
-		header( "Refresh:1; url=cover.php"); 
+	
+	function newUser()
+	{
+		include '../dbconfig.php';
+			$mid=$_POST['mid'];
+			$name=$_POST['name'];
+			$gender=$_POST['gender'];
+			$dob=$_POST['dob'];
+			$contact=$_POST['contact'];
+			$address=$_POST['address'];
+			$username=$_POST['username'];
+			$password=$_POST['pwd'];
+			$region=$_POST['region'];
+			$sql = "INSERT INTO manager (MID, Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$mid','$name','$gender','$dob','$contact','$address','$username','$password','$region') ";
+	
+		if (mysqli_query($conn, $sql)) 
+		{
+			echo '<script>alert("Record created successfully!! Refreshing....");
+			window.location.href="addmanager.php";</script>'; 
+	
+		} 
+		else
+		{
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
 	}
-function newUser()
-{
-	include '../dbconfig.php';
+	function checkmid()
+	{
+		include '../dbconfig.php';
 		$mid=$_POST['mid'];
-		$name=$_POST['name'];
-		$gender=$_POST['gender'];
-		$dob=$_POST['dob'];
-		$contact=$_POST['contact'];
-		$address=$_POST['address'];
-		$username=$_POST['username'];
-		$password=$_POST['pwd'];
-		$region=$_POST['region'];
-		$sql = "INSERT INTO manager (MID, Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$mid','$name','$gender','$dob','$contact','$address','$username','$password','$region') ";
-
-	if (mysqli_query($conn, $sql)) 
-	{
-		echo '<script>alert("Record created successfully!! Refreshing....");
-		window.location.href="addmanager.php";</script>'; 
-
-	} 
-	else
-	{
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-}
-function checkmid()
-{
-	include '../dbconfig.php';
-	$mid=$_POST['mid'];
-	$sql= "SELECT * FROM manager WHERE MID = '$mid'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo '<script>alert("MID already exists!")</script>';
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		newUser();
-	}
-
+		$sql= "SELECT * FROM manager WHERE MID = '$mid'";
 	
-}
-function checkusername()
-{
-	include '../dbconfig.php';
-	$usn=$_POST['username'];
-	$sql= "SELECT * FROM manager WHERE Username = '$usn'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo '<script>alert("Username already exists!")</script>';
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		checkmid();
-	}
-
+		$result=mysqli_query($conn,$sql);
 	
-}
-if(isset($_POST['Submit']))
-{
-	if(!empty($_POST['mid'])&& !empty($_POST['region']) && !empty($_POST['username']) && !empty($_POST['pwd']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
-		checkusername();
-	}else{
-		echo '<script>alert("Please fill in all the columns!")</script>';
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("MID already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			newUser();
+		}
+	
+		
 	}
-}
-
-?>
+	function checkusername()
+	{
+		include '../dbconfig.php';
+		$usn=$_POST['username'];
+		$sql= "SELECT * FROM manager WHERE Username = '$usn'";
+	
+		$result=mysqli_query($conn,$sql);
+	
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("Username already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			checkmid();
+		}
+	
+		
+	}
+	if(isset($_POST['Submit']))
+	{
+		if(!empty($_POST['mid'])&& !empty($_POST['region']) && !empty($_POST['username']) && !empty($_POST['pwd']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
+			checkusername();
+		}else{
+			echo '<script>alert("Please fill in all the columns!")</script>';
+		}
+	}
+	
+	?>
 
 </body>
 </html>

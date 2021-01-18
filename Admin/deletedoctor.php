@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -47,14 +47,15 @@
 </ul>
 </h2>
 <h1>
-<center><h1>DELETE DOCTOR</h1><hr>
+<div class="container">
+<center><h1>DELETE DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter DID:<center><input type="number" name="did"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
-			<br>---------OR---------<br>
+			<br><br>---------OR---------<br><br>
 Select Name:<br><?php
 				require_once('../dbconfig.php');
-				$doctor_result = $conn->query('select * from doctor order by DID ASC');
+				$doctor_result = $conn->query('SELECT * FROM doctor');
 				?>
 				<center>
 				<select name="doctorname">
@@ -63,7 +64,7 @@ Select Name:<br><?php
 				if ($doctor_result->num_rows > 0) {
 				while($row = $doctor_result->fetch_assoc()) {
 				?>
-				<option value="<?php echo $row["DID"]; ?>"><?php echo "(DID= $row[DID]) Dr. ".$row["Name"]; ?></option>
+				<option value="<?php echo $row["did"]; ?>"><?php echo "($row[did]) Dr. ".$row["name"]; ?></option>
 				<?php
 					}
 					}
@@ -71,7 +72,8 @@ Select Name:<br><?php
 				</select></center>
 				
 				<button type="submit" name="Submit2">Delete by Name</button>
-</form>			
+</form>	
+				</div>		
 <?php
 include '../dbconfig.php';
 session_start();
@@ -127,7 +129,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>			
 </body>

@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW MANAGER</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -99,8 +100,9 @@ mysqli_close($conn);
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>
+</div>
 </body>
 </html>

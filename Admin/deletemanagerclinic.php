@@ -26,7 +26,7 @@ function getManager(val) {
 
 </script>
 </head>
-<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -69,7 +69,8 @@ function getManager(val) {
 	
 </ul>
 </h2>
-<center><h1>REMOVE MANAGER FROM A CLINIC</h1><hr>
+<div class="container">
+<center><h1>REMOVE MANAGER FROM A CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
 		<select name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);">
@@ -84,22 +85,23 @@ function getManager(val) {
 		<?php
 		}
 		?>
-		</select>
+		</select><br>
         
 	
 		<label style="font-size:20px" >Clinic:</label>
 		<select id="clinic-list" name="clinic" onchange="getManager(this.value);" >
 		<option value="">Select Clinic</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >Manager:</label>
 		<select name="manager" id="manager-list" >
 		<option value="">Select Manager</option>
-		</select>
+		</select><br>
 		
 		
 		<button name="Submit" type="submit">Submit</button>
 	</form>
+	</div>
 <?php
 session_start();
 include '../dbconfig.php';
@@ -135,7 +137,7 @@ if(isset($_POST['Submit']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>			
 

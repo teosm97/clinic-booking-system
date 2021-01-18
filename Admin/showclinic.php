@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW CLINIC</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -75,7 +76,7 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 $sql="SELECT * FROM clinic order by City,Town,CID ASC";
 $result = mysqli_query($conn,$sql);
@@ -104,5 +105,7 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 mysqli_close($conn);
 ?>
+</center>
+</div>
 </body>
 </html>

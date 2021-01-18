@@ -46,6 +46,7 @@
 </ul>
 </h2>
 
+<div class="container">
 <center><h1>ADD DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 	<label style="color:black"><b>DID: </b></label><br>
@@ -117,84 +118,86 @@
 	
 	<button type="submit" name="Submit">REGISTER</button>
 </form>
+</font></b>
 </center>
+</div>
 <?php
-function newUser()
-{
-	include '../dbconfig.php';
+	function newUser()
+	{
+		include '../dbconfig.php';
+			$did=$_POST['did'];
+			$name=$_POST['name'];
+			$gender=$_POST['gender'];
+			$dob=$_POST['dob'];
+			$experience=$_POST['experience'];
+			$specialization=$_POST['specialization'];
+			$contact=$_POST['contact'];
+			$address=$_POST['address'];
+			$username=$_POST['username'];
+			$password=$_POST['pwd'];
+			$region=$_POST['region'];
+			$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
+	
+		if (mysqli_multi_query($conn, $sql)) 
+		{
+			echo '<script>alert("Record created successfully!! Refreshing....");
+			window.location.href="adddoctor.php";</script>'; 
+		} 
+		else
+		{
+		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
+	}
+	function checkdid()
+	{
+		include '../dbconfig.php';
 		$did=$_POST['did'];
-		$name=$_POST['name'];
-		$gender=$_POST['gender'];
-		$dob=$_POST['dob'];
-		$experience=$_POST['experience'];
-		$specialization=$_POST['specialization'];
-		$contact=$_POST['contact'];
-		$address=$_POST['address'];
-		$username=$_POST['username'];
-		$password=$_POST['pwd'];
-		$region=$_POST['region'];
-		$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
-
-	if (mysqli_multi_query($conn, $sql)) 
-	{
-		echo '<script>alert("Record created successfully!! Refreshing....");
-		window.location.href="adddoctor.php";</script>'; 
-	} 
-	else
-	{
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-}
-function checkdid()
-{
-	include '../dbconfig.php';
-	$did=$_POST['did'];
-	$sql= "SELECT * FROM doctor WHERE DID = '$did'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo '<script>alert("DID already exists!")</script>';
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		newUser();
-	}
-
+		$sql= "SELECT * FROM doctor WHERE DID = '$did'";
 	
-}
-function checkusername()
-{
-	include '../dbconfig.php';
-	$usn=$_POST['username'];
-	$sql= "SELECT * FROM doctor WHERE Username = '$usn'";
-
-	$result=mysqli_query($conn,$sql);
-
-		if(mysqli_num_rows($result)!=0)
-       {
-			echo '<script>alert("Username already exists!")</script>';
-       }
-	else 
-		if(isset($_POST['Submit']))
-	{ 
-		checkdid();
-	}
-
+		$result=mysqli_query($conn,$sql);
 	
-}
-if(isset($_POST['Submit']))
-{
-	if(!empty($_POST['did']) && !empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
-		checkusername();
-	} else {
-		echo '<script>alert("Please fill in all the columns!")</script>';
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("DID already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			newUser();
+		}
+	
+		
 	}
-}
-
-?>
+	function checkusername()
+	{
+		include '../dbconfig.php';
+		$usn=$_POST['username'];
+		$sql= "SELECT * FROM doctor WHERE Username = '$usn'";
+	
+		$result=mysqli_query($conn,$sql);
+	
+			if(mysqli_num_rows($result)!=0)
+		   {
+				echo '<script>alert("Username already exists!")</script>';
+		   }
+		else 
+			if(isset($_POST['Submit']))
+		{ 
+			checkdid();
+		}
+	
+		
+	}
+	if(isset($_POST['Submit']))
+	{
+		if(!empty($_POST['did']) && !empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
+			checkusername();
+		} else {
+			echo '<script>alert("Please fill in all the columns!")</script>';
+		}
+	}
+	
+	?>
 
 </body>
 </html>
