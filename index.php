@@ -90,11 +90,12 @@ window.onclick = function(event) {
 		$username=$_POST['uname'];
 		$password=$_POST['psw'];
 		$role = $_POST['role'];
+		$hash = password_hash($password,PASSWORD_DEFAULT); 
 
 		$query = mysqli_query($conn,"SELECT * from user WHERE username='$username' AND role='$role'");
 		$rows = mysqli_fetch_assoc($query);
 		$num=mysqli_num_rows($query);
-		if ($num == 1) {
+		if (($num == 1) && password_verify($password, $rows['password'])) {
 			$_SESSION['username']=$rows['username'];
 			if($role == 1){
 				header( "Refresh:1; url=patient/ulogin.php"); 
