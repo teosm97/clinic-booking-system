@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
