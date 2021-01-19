@@ -32,7 +32,7 @@ tr,td{
 		</ul>
 	</div>
 	<form action="changebookingstatus.php" method="post">
-	<div class="container">
+	<div class="container3">
 		
 	
 		<label style="font-size:20px; color: black;"><b>Doctor:</b></label><br><br>

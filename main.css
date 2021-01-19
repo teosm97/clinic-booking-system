@@ -170,12 +170,17 @@ img.avatar {
 }
 
 .container {
+  padding: 16px;
+}
+
+.container3 {
   width: 67%;
   padding: 30px;
   margin: auto;
   margin-top: 50px;
   background-color: #f2f2f2;
 }
+
 .sucontainer {
   padding: 12px;
   position: absolute;
