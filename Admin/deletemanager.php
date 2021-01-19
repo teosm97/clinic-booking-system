@@ -82,12 +82,12 @@ if(isset($_POST['Submit2']))
 	//$sql1="update clinic set MID=0 where MID=$mid";
 	if (mysqli_multi_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:3; url=deletemanager.php");
+			echo '<script>alert("Record deleted successfully.Refreshing....");
+			window.location.href="deletemanager.php";</script>';
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			echo '<script>alert("Error deleting record!")</script>';
 		}
 				
 

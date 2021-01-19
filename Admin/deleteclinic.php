@@ -83,12 +83,12 @@ if(isset($_POST['Submit2']))
 
 	if (mysqli_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:2; url=deleteclinic.php");
+			echo '<script>alert("Record deleted successfully.Refreshing....");
+			window.location.href="deleteclinic.php";</script>';
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			echo '<script>alert("Error deleting record!")</script>';
 		}
 
 }	
