@@ -12,9 +12,6 @@
 			<div style="margin-top:10%;text-align:center" class="center">
 				<img style="width:400px;height:230px" src="images/skylabs.png">
 				<p>Book Your Clinic Appointment Now!</p>
-
-				
-				
 			</div>	
 
 <div id="id01" class="modal">
