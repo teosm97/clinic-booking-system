@@ -19,7 +19,7 @@
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" method="post" action="cover.php">
+  <form class="modal-content animate" method="post" action="index.php">
     <div class="imgcontainer">
 		<span><h2 style ="text-align:center">Log In</h2></span>
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -27,9 +27,7 @@
 	
     <div class="container">
       <input type="text" placeholder="Enter Username" name="uname" required>
-
       <input type="password" placeholder="Enter Password" name="psw" required>
-
 	  <text>Role : </text>
 	  <select style ="margin-top:10px;height:30px" name="role" id="role">
 			<option value="1">Patient</option>
@@ -37,14 +35,12 @@
 			<option value="3">Admin</option>
 			<option value="4">Doctor</option>
 	  </select>
-		
-		<div style ="text-align: center;margin-top:15px">
-		<button style="background-color: #4CAF50;width:100%;border-radius: 2px" type="submit" name="login">Login</button>
-		Not registered? <a style="color:blue;font-size:17px" onclick="document.getElementById('id02').style.display='block';document.getElementById('id01').style.display='none'">Create an account</a>
-		</div>
-    </div>
 
-      
+		<div style ="text-align: center;margin-top:15px">
+			<button style="background-color: #4CAF50;width:100%;border-radius: 2px" type="submit" name="login">Login</button>
+			Not registered? <a style="color:blue;font-size:17px" onclick="document.getElementById('id02').style.display='block';document.getElementById('id01').style.display='none'">Create an account</a>
+		</div>
+    </div> 
   </form>
 </div>
 
@@ -65,7 +61,6 @@
       	<p style="text-align:center"><b>The 3 steps for an easier and healthy life</b></p>
 	  	<button style="background-color: #4CAF50;width:100%;border-radius: 2px" type="submit" name="signup">Sign Up</button>
     </div>
-	
   </form>
 </div>
 
@@ -88,43 +83,38 @@ window.onclick = function(event) {
 
 </script>
 <?php
-session_start();
-$error=''; 
-if (isset($_POST['login'])) {
-if (empty($_POST['uname']) || empty($_POST['psw'])) {
-$error = "Username or Password is invalid";
-}
-else
-{
-	include 'dbconfig.php';
-	$username=$_POST['uname'];
-	$password=$_POST['psw'];
-	$role = $_POST['role'];
-
-	$query = mysqli_query($conn,"SELECT * from user WHERE username='$username' AND role='$role'");
-	$rows = mysqli_fetch_assoc($query);
-	$num=mysqli_num_rows($query);
-	if ($num == 1) {
-		$_SESSION['username']=$rows['username'];
-		if($role == 1){
-			header( "Refresh:1; url=patient/ulogin.php"); 
-		}
-		elseif($role == 2){		
-			$_SESSION['mgrid']=1;
-			header( "Refresh:1; url=manager/mgrmenu.php"); 
-		}
-		else{
-			header( "Refresh:1; url=admin/mainpage.php"); 
-		}
-	} 
-	else 
-	{
-		$error = "Username or Password is invalid";
+	session_start();
+	if (isset($_POST['login'])) {
+	if (empty($_POST['uname']) || empty($_POST['psw'])) {
+		echo '<script>alert("Please enter all fields to login!")</script>';
 	}
+	else{
+		include 'dbconfig.php';
+		$username=$_POST['uname'];
+		$password=$_POST['psw'];
+		$role = $_POST['role'];
 
-	mysqli_close($conn); 
-}
-}
+		$query = mysqli_query($conn,"SELECT * from user WHERE username='$username' AND role='$role'");
+		$rows = mysqli_fetch_assoc($query);
+		$num=mysqli_num_rows($query);
+		if ($num == 1) {
+			$_SESSION['username']=$rows['username'];
+			if($role == 1){
+				header( "Refresh:1; url=patient/ulogin.php"); 
+			}
+			elseif($role == 2){		
+				$_SESSION['mgrid']=1;
+				header( "Refresh:1; url=manager/mgrmenu.php"); 
+			}
+			else{
+				header( "Refresh:1; url=admin/mainpage.php"); 
+			}
+		} 
+		else{
+			echo '<script>alert("Please enter a valid credentials to login!")</script>';
+		}
+		mysqli_close($conn); 
+	}}
 ?>
 </body>
 </html>
