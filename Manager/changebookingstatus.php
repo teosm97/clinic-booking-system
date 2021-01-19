@@ -32,10 +32,10 @@ tr,td{
 		</ul>
 	</div>
 	<form action="changebookingstatus.php" method="post">
-	<div>
+	<div class="container">
 		
 	
-		<label style="font-size:20px"><b>Doctor:</b></label><br>
+		<label style="font-size:20px; color: black;"><b>Doctor:</b></label><br><br>
 		<select name="doctor" id="doctor-list" class="demoInputBox" style="width:100%;height:35px;border-radius:9px">
 		<option value="">Select Doctor</option>
 		<?php
@@ -50,9 +50,10 @@ tr,td{
 		}
 		?>
 		</select>
+		<br>
         <br>
 		
-		<label><b>Date:</b></label><br>
+		<label style="font-size:20px; color: black;"><b>Date:</b></label><br><br>
 		<input type="date" name="dateselected" required><br><br>
 		<br>
 			<button type="submit" style="position:center" name="submit" value="Submit">Submit</button>
@@ -90,7 +91,8 @@ if(isset($_POST['submit']))
 			}
 ?>		
 			</table>	
-			<button type="submit" style="position:center" name="submit2" value="Submit">Submit Changes</button></form>		
+			<button type="submit" style="position:center" name="submit2" value="Submit">Submit Changes</button></form>	
+		</div>	
 <?php
 }
 require_once("../dbconfig.php");
