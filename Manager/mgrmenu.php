@@ -1,22 +1,27 @@
 <html>
 <head>
 	<link rel="stylesheet" href="../main.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
 </head>
 <body style="background-image:url(../images/mgrchange.jpg)">
 <div class="header">
 				<ul>
-					<li style="float:left;border-right:none"><strong><?php session_start(); echo $_SESSION['username']; ?></strong></li>
-					<li><a href="mgrmenu.php">Home</a></li>
+					<li style="float:left;border-right:none"><a class="logo"><img src="../images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
+					<form method="post">	
+					<button type="submit" name="logout" style="float:right;"><b>Log Out</b></button>
+					</form>
 				</ul>
 </div>
-<div class="container" style="width:100%;background-image:url(../images/mgrchange.jpg)">
-	<div class="container" style="background-color:white">
-	<form method="post">
-	  <button type="button" name="change" onclick="window.location.href='changebookingstatus.php'">Change/View Booking Status</button>
-	  <button type="submit" name="logout" style="float:right">Log Out</button>
-	</form>
+
+	<h1 class="titlefont">Welcome, <?php session_start(); echo $_SESSION['username']; ?></h1>
+	<div class="container2">   
+       <div class="manager-container">
+        <img src="../images/change.png" alt="" />
+        <br>
+        <a href="changebookingstatus.php">Change Booking Status</a>
+      </div>    
     </div>
-</div>
 <?php
 if(isset($_POST['check']))
 {
