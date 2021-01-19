@@ -1,11 +1,15 @@
 <html>
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Balsamiq+Sans:wght@700&display=swap" rel="stylesheet">
+<title>Home</title>
 </head>
 
 <body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
+
 <ul>
-<li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
+<li class="dropdown"><font color="yellow" size="10">ADMIN HOME</font></li>
 <br>
 <h2>
   <li class="dropdown">    
@@ -49,7 +53,26 @@
 </h2>
 <p>
 
-<center><h1>********WELCOME ADMIN*******</h1> 
+<center><h1 class="titlefont">WELCOME, ADMIN</h1></center>
+    
+<div class="container2">
+      <div class="doctor-container">
+        <img src="../images/doctor.png" alt="" />
+        <br>
+        <a href="showdoctor.php">Doctor</a>
+      </div>
+      <div class="manager-container">
+        <img src="../images/manager.png" alt="" />
+        <br>
+        <a href="showmanager.php">Manager</a>
+      </div>    
+       <div class="clinic-container">
+        <img src="../images/hospital.png" alt="" />
+        <br>
+        <a href="showclinic.php">Clinic</a>
+      </div>    
+  </div>
+
 <?php
 session_start();	
 	if(isset($_POST['logout'])){

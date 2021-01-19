@@ -132,3 +132,86 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.container2 {
+  padding-top: 30px;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-flow: nowrap;
+}
+
+.container2 a {
+  margin-right: 12px;
+}
+
+.container2 .doctor-container {
+  flex: 1;
+  background-color: #fff3bf;
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-right: 30px;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.doctor-container img {
+  height: 200px;
+  width: 200px;
+  margin-right: 30px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+.container2 .clinic-container {
+  flex: 1;
+  background-color: #fff3bf;
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-right: 30px;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.clinic-container img {
+  height: 200px;
+  width: 200px;
+  margin-right: 30px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+.container2 .manager-container {
+  flex: 1;
+  background-color: #fff3bf;
+  padding-left: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-right: 30px;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.manager-container img {
+  height: 200px;
+  width: 200px;
+  margin-right: 30px;
+  margin-left: 15px;
+  margin-bottom: 20px;
+}
+
+.titlefont {
+  font-family: "Abril Fatface", cursive;
+  font-family: "Balsamiq Sans", cursive;
+  padding-top: 80px;
+  font-size: 30px;
+}
