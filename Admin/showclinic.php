@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/clinicview.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW CLINIC</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -104,5 +105,7 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 mysqli_close($conn);
 ?>
+</center>
+</div>
 </body>
 </html>

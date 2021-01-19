@@ -5,7 +5,7 @@
 <body style="background-image:url(images/signup.jpg); height: 180%; background-repeat: no-repeat;">
 <div class="header">
 				<ul>
-					<li style="float:left;border-right:none"><a href="cover.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
+					<li style="float:left;border-right:none"><a href="index.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
 					<li><a href="locateus.php">Locate Us</a></li>
 					<li><a href="index.php">Home</a></li>
 				</ul>
@@ -65,9 +65,7 @@ function newUser()
 	if (mysqli_query($conn, $sql)) 
 	{
 		echo '<script>alert("Record created successfully!! Redirecting to login page....");
-		window.location.href="cover.php";</script>'; 
-		//header( "Refresh:3; url=cover.php");
-
+		window.location.href="index.php";</script>';
 	} 
 	else
 	{

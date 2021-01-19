@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/doctordesk.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -68,13 +68,14 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW DOCTOR</h1><hr>
 <?php
 include '../dbconfig.php';
 session_start();
 $sql="SELECT * FROM Doctor order by DID ASC";
 $result = mysqli_query($conn,$sql);
-echo "<br><h2>TOTAL DOCTORS IN DATABASE=<b>".mysqli_num_rows($result)."</b></h2><br>";
+echo "<br><h2>TOTAL DOCTORS: <b>".mysqli_num_rows($result)."</b></h2><br>";
 echo "<table>
 <tr>
 <th>DID</th>
@@ -106,5 +107,6 @@ if(isset($_POST['logout'])){
 		header( "Refresh:1; url=../index.php"); 
 	}
 ?>
+</div>
 </body>
 </html>

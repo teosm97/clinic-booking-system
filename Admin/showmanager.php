@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/bookback.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW MANAGER</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -102,5 +103,6 @@ if(isset($_POST['logout'])){
 		header( "Refresh:1; url=../index.php"); 
 	}
 ?>
+</div>
 </body>
 </html>

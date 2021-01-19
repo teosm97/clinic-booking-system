@@ -26,7 +26,7 @@ function getDoctorRegion(val) {
 
 </script>
 </head>
-<body background= "../images/clinicview.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 175%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -69,10 +69,13 @@ function getDoctorRegion(val) {
 	
 </ul>
 </h2>
-<center><h1>ASSIGN DOCTOR TO A CLINIC</h1><hr>
+<br>
+<div class="container">
+<center><h1>ASSIGN DOCTOR TO A CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 <label style="font-size:20px" >City:</label>
-		<select name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);getDoctorRegion(this.value);">
+
+		<select style="width:300px" name="city" id="city-list" class="demoInputBox"  onChange="getState(this.value);getDoctorRegion(this.value);">
 		<option value="">Select City</option>
 		<?php
 		include '../dbconfig.php';
@@ -84,18 +87,18 @@ function getDoctorRegion(val) {
 		<?php
 		}
 		?>
-		</select>
+		</select><br>
         
 	
 		<label style="font-size:20px" >Clinic:</label>
-		<select id="clinic-list" name="clinic"  >
+		<select  style="width:300px" id="clinic-list" name="clinic"  >
 		<option value="">Select Clinic</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >Doctor:</label>
-		<select name="doctor" id="doctor-list">
+		<select style="width:300px" name="doctor" id="doctor-list">
 		<option value="">Select Doctor</option>
-		</select>
+		</select><br>
 		
 		<label style="font-size:20px" >
 		Available Days<br>
@@ -107,19 +110,21 @@ function getDoctorRegion(val) {
 		<tr><td>Friday:</td><td><input type="checkbox" value="Friday" name="daylist[]"/></td></tr>
 		<tr><td>Saturday:</td><td><input type="checkbox" value="Saturday" name="daylist[]"/></td></tr>
 		</table>
+		<br>
 		Availability(24 hour Format):<br>
-		From:<input type="time" name="starttime"><br>
-		To:<input type="time" name="endtime"> &nbsp &nbsp &nbsp
+		From:<input style="width:300px" type="time" name="starttime"><br>
+		To:<input style="width:300px" type="time" name="endtime"> &nbsp &nbsp &nbsp
 		
 		</label>
 		<button name="Submit" type="submit">Submit</button>
 	</form>
+	</div>
 <?php
 session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 if(isset($_POST['Submit']))
 {
@@ -134,11 +139,11 @@ if(isset($_POST['Submit']))
 				$sql = "INSERT INTO doctor_availability (CID, DID, Day, Starttime, Endtime) VALUES ('$cid','$did','$daylist','$starttime','$endtime')";
 				if (mysqli_query($conn, $sql)) 
 				{
-					echo "<h2>Record created successfully( CID=$cid DID=$did Day=$daylist )!!</h2>";
+					$result = "<h2>Record created successfully( CID=$cid DID=$did Day=$daylist )!!</h2>";
 				} 
 				else
 				{
-					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+					$result = "Error: " . $sql . "<br>" . mysqli_error($conn);
 				}
 		}
 }
