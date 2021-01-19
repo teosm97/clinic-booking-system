@@ -2,8 +2,8 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body>
 
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -55,7 +55,7 @@ session_start();
 	if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>
 </body>

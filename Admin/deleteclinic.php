@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "../images/clinicview.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -47,10 +47,11 @@
 </ul>
 </h2>
 <h1>
-<center><h1>DELETE CLINIC</h1><hr>
+<div class="container">
+<center><h1>DELETE CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter CID:<center><input type="number" name="cid"></center>
-			<button type="submit" name="Submit1">Delete by CID</button>
+			<button type="submit" name="Submit1">Delete by CID</button><br>
 			<br>---------OR---------<br>
 Select Name:<br><?php
 				require_once('../dbconfig.php');
@@ -71,11 +72,11 @@ Select Name:<br><?php
 				</select></center>
 				
 				<button type="submit" name="Submit2">Delete by Name</button>
-</form>			
+</form>	
+</div>		
 <?php
 
 include '../dbconfig.php';
-session_start();
 if(isset($_POST['Submit1']))
 {
 	$cid=$_POST['cid'];
@@ -111,7 +112,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=/index.php"); 
 	}
 ?>			
 </body>

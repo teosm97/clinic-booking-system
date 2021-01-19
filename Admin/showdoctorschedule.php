@@ -25,7 +25,7 @@ tr,td{
 </style>
 
 </head>
-<body background= "../images/doctordesk.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -68,6 +68,7 @@ tr,td{
 	
 </ul>
 </h2>
+<div class="container">
 <center><h1>SHOW DOCTOR SCHEDULE</h1><hr>
 <?php
 include '../dbconfig.php';
@@ -110,8 +111,9 @@ mysqli_close($conn);
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>
+</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" href="adminmain.css"> 
 </head>
-<body background= "../images/bookback.jpg">
+<body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
 <li class="dropdown"><font color="yellow" size="10">ADMIN MODE</font></li>
 <br>
@@ -46,12 +46,12 @@
 	
 </ul>
 </h2>
-<h1>
-<center><h1>DELETE MANAGER</h1><hr>
+<div class="container">
+<center><h1>DELETE MANAGER</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
 Enter MID:<center><input type="number" name="mid"></center>
 			<button type="submit" name="Submit1">Delete by DID</button>
-			<br>---------OR---------<br>
+			<br><br>---------OR---------<br><br>
 Select Name:<br><?php
 				require_once('../dbconfig.php');
 				$manager_result = $conn->query('select * from manager order by MID ASC');
@@ -71,7 +71,8 @@ Select Name:<br><?php
 				</select></center>
 				
 				<button type="submit" name="Submit2">Delete by Name</button>
-</form>			
+</form>		
+</div>	
 <?php
 session_start();
 include '../dbconfig.php';
@@ -133,7 +134,7 @@ if(isset($_POST['Submit2']))
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 ?>			
 </body>
