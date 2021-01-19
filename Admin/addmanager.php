@@ -104,27 +104,33 @@
 </center>
 </div>
 <?php
-	
-	function newUser()
+
+session_start();
+if(isset($_POST['logout'])){
+		session_unset();
+		session_destroy();
+		header( "Refresh:1; url=../index.php"); 
+	}
+function newUser()
+{
+	include '../dbconfig.php';
+		$mid=$_POST['mid'];
+		$name=$_POST['name'];
+		$gender=$_POST['gender'];
+		$dob=$_POST['dob'];
+		$contact=$_POST['contact'];
+		$address=$_POST['address'];
+		$username=$_POST['username'];
+		$password=$_POST['pwd'];
+		$region=$_POST['region'];
+		$sql = "INSERT INTO manager (MID, Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$mid','$name','$gender','$dob','$contact','$address','$username','$password','$region') ";
+
+	if (mysqli_query($conn, $sql)) 
 	{
-		include '../dbconfig.php';
-			$mid=$_POST['mid'];
-			$name=$_POST['name'];
-			$gender=$_POST['gender'];
-			$dob=$_POST['dob'];
-			$contact=$_POST['contact'];
-			$address=$_POST['address'];
-			$username=$_POST['username'];
-			$password=$_POST['pwd'];
-			$region=$_POST['region'];
-			$sql = "INSERT INTO manager (MID, Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$mid','$name','$gender','$dob','$contact','$address','$username','$password','$region') ";
-	
-		if (mysqli_query($conn, $sql)) 
-		{
-			echo '<script>alert("Record created successfully!! Refreshing....");
-			window.location.href="addmanager.php";</script>'; 
-	
-		} 
+		echo "<h2>Record created successfully!! Refreshing....</h2>";
+		header( "Refresh:2; url=addmanager.php");
+
+	} 
 		else
 		{
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);

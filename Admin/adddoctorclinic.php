@@ -62,7 +62,7 @@ function getDoctorRegion(val) {
     </div>
   </li>
    <li>  
-	<form method="post" action="mainpage.php">	
+	<form method="post" action="index.php">	
 	<button type="submit" class="cancelbtn" name="logout" style="float:right;font-size:22px"><b>Log Out</b></button>
 	</form>
   </li>

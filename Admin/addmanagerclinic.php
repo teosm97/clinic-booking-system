@@ -107,6 +107,7 @@ if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
 		header( "Refresh:1; url=../index.php"); 
+
 	}
 if(isset($_POST['Submit']))
 {
