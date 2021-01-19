@@ -75,7 +75,7 @@ session_start();
 if(isset($_POST['logout'])){
 		session_unset();
 		session_destroy();
-		header( "Refresh:1; url=../cover.php"); 
+		header( "Refresh:1; url=../index.php"); 
 	}
 $sql="SELECT * FROM clinic order by City,Town,CID ASC";
 $result = mysqli_query($conn,$sql);

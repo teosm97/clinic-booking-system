@@ -19,7 +19,7 @@
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" method="post" action="cover.php">
+  <form class="modal-content animate" method="post" action="index.php">
     <div class="imgcontainer">
 		<span style="float:left"><h2>&nbsp&nbsp&nbsp&nbspLog In</h2></span>
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>

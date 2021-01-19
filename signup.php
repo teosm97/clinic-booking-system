@@ -7,7 +7,7 @@
 				<ul>
 					<li style="float:left;border-right:none"><a href="cover.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
 					<li><a href="locateus.php">Locate Us</a></li>
-					<li><a href="cover.php">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 				</ul>
 </div>
 <form action="signup.php" method="post">
@@ -43,7 +43,7 @@
 		<p style="color:black">* By creating an account, you agree to our <a href="#" style="color:blue">Terms & Conditions</a>.</p><br>
 
 		<div class="container" style="background-color:white">
-			<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn"><a href="cover.php">Cancel</a></button>
+			<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn"><a href="index.php">Cancel</a></button>
 			<button type="submit" name="signup" style="float:right">Sign Up</button>
 		</div>
   </div>
