@@ -60,9 +60,10 @@ function newUser()
 		$username=$_POST['username'];
 		$password=$_POST['pwd'];
 		$prepeat=$_POST['pwdr'];
-		$sql = "INSERT INTO Patient (Name, Gender, DOB,Contact,Email,Username,Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$password') ";
+		$hash = password_hash($password,PASSWORD_DEFAULT); 
+		$sql = "INSERT INTO Patient (Name, Gender, DOB,Contact,Email,Username,Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$hash'); INSERT INTO user (Username, Password, Role) VALUES ('$username','$hash',1)";
 
-	if (mysqli_query($conn, $sql)) 
+	if (mysqli_multi_query($conn, $sql)) 
 	{
 		echo '<script>alert("Record created successfully!! Redirecting to login page....");
 		window.location.href="index.php";</script>';
