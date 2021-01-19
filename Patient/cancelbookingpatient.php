@@ -49,8 +49,10 @@ if(isset($_POST['submit']))
 		$updatequery="update book set Status='Cancelled by Patient' where username='$username' and timestamp= '$timestamp'";
 				if (mysqli_query($conn, $updatequery)) 
 				{
-							echo "Appointment Cancelled successfully..!!<br>";
-							header( "Refresh:2; url=ulogin.php");
+					echo '<script>alert("Appointment Cancelled successfully!");
+					window.location.href="ulogin.php";</script>';
+							// echo "Appointment Cancelled successfully..!!<br>";
+							// header( "Refresh:2; url=ulogin.php");
 
 				} 
 				else

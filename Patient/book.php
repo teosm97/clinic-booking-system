@@ -138,15 +138,15 @@ if(isset($_POST['submit']))
 			}
 			if($flag==0)
 			{
-				echo "<h2>Select another date as Doctor Unavailable on ".$compareday."</h2>";
+				//echo "<h2>Select another date as Doctor Unavailable on ".$compareday."</h2>";
+				echo '<script>alert("Select another date as Doctor Unavailable on ".$compareday."")</script>';
 			}
 			else
 			{
 				if (mysqli_query($conn, $sql)) 
 				{
-						echo "<h2>Booking successful!! Redirecting to home page....</h2>";
-						header( "Refresh:2; url=ulogin.php");
-
+					echo '<script>alert("Booking successful!! Redirecting to home page....");
+					window.location.href="ulogin.php";</script>';
 				} 
 				else
 				{
@@ -156,7 +156,7 @@ if(isset($_POST['submit']))
 		}
 		else
 		{
-			echo "Enter data properly!!!!";
+			echo '<script>alert("Please fill in all the columns!")</script>';
 		}
 }
 ?>

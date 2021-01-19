@@ -119,7 +119,7 @@ if(isset($_POST['subd']))
 		}
 		else
 		{
-				echo"Enter a valid name.";
+			echo '<script>alert("Enter a valid name!")</script>';
 		}
 }
 if(isset($_POST['submit']))

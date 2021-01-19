@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <ul>
@@ -83,12 +83,12 @@ if(isset($_POST['Submit2']))
 
 	if (mysqli_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:2; url=deleteclinic.php");
+			echo '<script>alert("Record deleted successfully.Refreshing....");
+			window.location.href="deleteclinic.php";</script>';
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			echo '<script>alert("Error deleting record!")</script>';
 		}
 
 }	
