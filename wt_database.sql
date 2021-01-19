@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2021 at 09:33 PM
+-- Generation Time: Jan 19, 2021 at 05:24 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -44,9 +44,10 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`Username`, `Fname`, `Gender`, `CID`, `DID`, `DOV`, `Timestamp`, `Status`) VALUES
-('user', 'patient', 'male', 1, 1, '2017-11-08', '2017-11-05 16:43:48', 'Booking Registered.Wait for the update'),
-('user', 'saya', 'female', 1, 1, '2021-01-21', '2021-01-14 19:24:41', 'Cancelled by Patient'),
-('silz', 'asilah', 'female', 1, 1, '2021-01-21', '2021-01-14 20:52:53', 'Booking Registered.Wait for the update');
+('user', 'patient', 'male', 1, 1, '2017-11-08', '2017-11-05 16:43:48', 'lol'),
+('user', 'saya', 'female', 1, 1, '2021-01-21', '2021-01-14 19:24:41', 'apo?'),
+('silz', 'asilah', 'female', 1, 1, '2021-01-21', '2021-01-14 20:52:53', 'Cancelled by Patient'),
+('silz', 'Sharifah Nur Asilah ', 'female', 1, 1, '2021-01-19', '2021-01-14 23:02:16', 'Cancelled by Patient');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,8 @@ CREATE TABLE `clinic` (
 
 INSERT INTO `clinic` (`cid`, `name`, `address`, `town`, `city`, `contact`, `mid`) VALUES
 (1, 'Clinic', 'XYZ apartment, CST', 'CST', 'Mumbai', 9999988888, '1'),
-(2, 'Klinik Pelangi', '49 Jalan Lembah 4', 'Bandar Seri Alam', 'Masai', 1110742106, '');
+(2, 'Klinik Pelangi', '49 Jalan Lembah 4', 'Bandar Seri Alam', 'Masai', 1110742106, ''),
+(4, 'Klinik Penawar', 'Jalan Perling 9 ', 'Kuala Lumpur', 'Cheras', 25267637, '');
 
 -- --------------------------------------------------------
 
@@ -98,7 +100,8 @@ CREATE TABLE `doctor` (
 
 INSERT INTO `doctor` (`did`, `name`, `gender`, `dob`, `experience`, `specialization`, `contact`, `address`, `username`, `password`, `region`) VALUES
 (1, 'doctor', 'male', '1980-01-01', 10, 'Orthodontist', 9999999999, 'XYZ tower, CST', 'doctor', 'doctor', 'Mumbai'),
-(2, 'asilah', 'female', '2018-07-13', 10, 'hahahaha', 1110742106, '49 Jalan Lembah 4, Bandar Seri Alam', 'silz', '1234567890', 'Johor');
+(3, 'Aminah', 'female', '2021-01-02', 2, 'hahahaha', 75768574, '49 Jalan Lembah 4, Bandar Seri Alam', 'aminah', '1234567890', 'Johor'),
+(4, 'Salmah', 'female', '2021-01-06', 10, 'hahaha', 9102838273, 'Johor Bahru', 'salmah', '1234567890', 'Johor');
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,9 @@ INSERT INTO `doctor_availability` (`cid`, `did`, `day`, `starttime`, `endtime`) 
 (1, 1, 'Friday', '14:00:00', '18:00:00'),
 (1, 1, 'Monday', '14:00:00', '18:00:00'),
 (1, 1, 'Thursday', '14:00:00', '18:00:00'),
+(1, 1, 'Tuesday', '06:21:00', '00:23:00'),
 (1, 1, 'Tuesday', '14:00:00', '18:00:00'),
+(1, 1, 'Wednesday', '06:21:00', '00:23:00'),
 (1, 1, 'Wednesday', '14:00:00', '18:00:00');
 
 -- --------------------------------------------------------
@@ -191,7 +196,9 @@ CREATE TABLE `patient` (
 INSERT INTO `patient` (`name`, `gender`, `dob`, `contact`, `email`, `username`, `password`) VALUES
 ('user', 'male', '1985-01-01', 7897897897, 'user@test.com', 'user', 'user'),
 ('amirah', 'female', '2021-01-23', 110742106, 'amirahrozey@gmail.com', 'amirahhhh', '1234567890'),
-('shahira', 'female', '2021-01-01', 110982921, 'sheraax1998@gmail.com', 'sheralol', '1234567890');
+('shahira', 'female', '2021-01-01', 110982921, 'sheraax1998@gmail.com', 'sheralol', '1234567890'),
+('Sharifah Nur Asilah ', 'female', '2021-01-16', 1110742106, 'asilah2110@gmail.com', 'silzzzz', '$2y$10$HA3iPwC2jVpm5'),
+('Eileena Soon', 'female', '2021-01-20', 1110742106, 'cashier@rezeipt.online', 'lololol', '$2y$10$VJQUOLfZ7tmAt');
 
 -- --------------------------------------------------------
 
@@ -211,11 +218,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'silz', '1234567890', 1),
-(2, 'admin', '1234567890', 3),
-(3, 'manager', '1234567890', 2),
+(1, 'silz', '$2y$10$8en/vx9kbGQIugfdqiLnYOGDs4RZ3xJB2HTs1tLqhOsDEMIZcJsqS', 1),
+(2, 'admin', '$2y$10$8en/vx9kbGQIugfdqiLnYOGDs4RZ3xJB2HTs1tLqhOsDEMIZcJsqS', 3),
+(3, 'manager', '$2y$10$8en/vx9kbGQIugfdqiLnYOGDs4RZ3xJB2HTs1tLqhOsDEMIZcJsqS', 2),
 (4, 'amirahhhh', '1234567890', 1),
-(5, 'sheralol', '1234567890', 1);
+(5, 'sheralol', '1234567890', 1),
+(6, 'aminah', '1234567890', 3),
+(7, 'salmah', '1234567890', 3),
+(8, 'lololol', '$2y$10$VJQUOLfZ7tmAtWF4bi.56ulP.RXqQ0PlAwZ4gqwbX9Tm.LZPDdXDi', 1);
 
 --
 -- Indexes for dumped tables
@@ -278,7 +288,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
