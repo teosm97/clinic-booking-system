@@ -49,9 +49,6 @@
 <div class="container">
 <center><h1>ADD CLINIC</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-	<label style="color:black"><b>CID: </b></label><br>
-		<input type="number" name="cid" required>
-	<br>
 
 	<label style="color:black"><b>Name: </b></label><br>
     	<input type="text" placeholder="Enter Clinic Name" name="name" minlength="5" maxlength="45" required><br>
@@ -101,13 +98,13 @@ if(isset($_POST['logout'])){
 	function newclinic()
 	{
 		include '../dbconfig.php';
-			$cid=$_POST['cid'];
+			
 			$name=$_POST['name'];
 			$town=$_POST['town'];
 			$city=$_POST['city'];
 			$contact=$_POST['contact'];
 			$address=$_POST['address'];
-			$sql = "INSERT INTO clinic (CID, Name, Address, Town, City, Contact, mid) VALUES ('$cid','$name','$address','$town','$city','$contact','')";
+			$sql = "INSERT INTO clinic (Name, Address, Town, City, Contact, mid) VALUES ('$name','$address','$town','$city','$contact','')";
 	
 		if (mysqli_query($conn, $sql)) 
 		{
@@ -119,17 +116,17 @@ if(isset($_POST['logout'])){
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
-	function checkcid()
+	function checkClinicName()
 	{
 		include '../dbconfig.php';
-		$cid=$_POST['cid'];
-		$sql= "SELECT * FROM clinic WHERE cid = '$cid'";
+		$cname=$_POST['name'];
+		$sql= "SELECT * FROM clinic WHERE Name = '$name'";
 	
 		$result=mysqli_query($conn,$sql);
 	
 			if(mysqli_num_rows($result)!=0)
 		   {
-			echo '<script>alert("CID already exists!")</script>';
+			echo '<script>alert("Clinic already exists!")</script>';
 		   }
 		else 
 			if(isset($_POST['Submit']))
@@ -141,8 +138,8 @@ if(isset($_POST['logout'])){
 	}
 	if(isset($_POST['Submit']))
 	{
-		if(!empty($_POST['cid'])&&!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact'])){
-				checkcid();
+		if(!empty($_POST['name'])&&!empty($_POST['address'])&&!empty($_POST['town'])&&!empty($_POST['city']) && !empty($_POST['contact'])){
+				checkClinicName();
 		} else {
 			echo '<script>alert("Please fill in all the columns!")</script>';
 		}
