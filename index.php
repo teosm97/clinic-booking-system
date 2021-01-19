@@ -30,7 +30,6 @@
 			<option value="1">Patient</option>
 			<option value="2">Manager</option>
 			<option value="3">Admin</option>
-			<option value="4">Doctor</option>
 	  </select>
 
 		<div style ="text-align: center;margin-top:15px">
