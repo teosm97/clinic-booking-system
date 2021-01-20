@@ -7,7 +7,7 @@ table{
     border-collapse: collapse;
 	border: 4px solid black;
     padding: 5px;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 th{
@@ -31,12 +31,15 @@ tr,td{
 					<li><a href="ulogin.php">Home</a></li>
 				</ul>
 </div>
+
 <center>
+	
 	<?php
+	
 	$username=$_SESSION['username'];
 	$sql1 = "Select * from book where username ='".$username."' order by DOV desc";
-			$result1=mysqli_query($conn, $sql1);  
-			echo "<table>
+			$result1=mysqli_query($conn, $sql1); 
+			echo "<table >
 					<tr>
 					<th>Appointment-Date</th>
 					<th>Name</th>
@@ -69,5 +72,70 @@ tr,td{
 			}
 	?>
 </center>
+	
+
+	<!--ditambah baru-->
+	<form action="viewpatientappointments.php" method="post">
+	<!-- <div class="sucontainer"> -->
+	
+		<label style="font-size:30px" >Select Appointment to Cancel</label><br><br>
+		<select name="appointment" id="appointment-list" class="demoInputBox"  style="width:50%;height:35px;border-radius:9px">
+		<option value="">Select Appointment</option>
+		<?php
+		session_start();
+		$username=$_SESSION['username'];
+		$date= date('Y-m-d');
+		$sql1="SELECT * from book where username='".$username."'and status not like 'Cancelled by Patient' and DOV >='$date'";
+         $results=$conn->query($sql1); 
+		while($rs=$results->fetch_assoc()) {
+			$sql2="select * from doctor where did=".$rs["DID"];
+			$results2=$conn->query($sql2);
+				while($rs2=$results2->fetch_assoc()) {
+					$sql3="select * from clinic where cid=".$rs["CID"];
+					$results3=$conn->query($sql3);
+		while($rs3=$results3->fetch_assoc()) {
+			
+		?>
+		<option value="<?php echo $rs["Timestamp"]; ?>"><?php echo "Patient: ".$rs["Fname"]." Date: ".$rs["DOV"]." -Dr.".$rs2["name"]." -Clinic: ".$rs3["name"]." -Town: ".$rs3["town"]." - Booked on:".$rs["Timestamp"]; ?></option>
+		<?php
+		}
+		}
+		}
+		?>
+		</select>
+		
+
+		<!--<button type="submit" style="position:center" name="submit" value="Submit">Submit</button>-->
+		<div class="text-center">
+			<button type="submit"  name="submit" value="Submit">Submit</button>
+	</div>
+	</form>
+<!--	<label style="font-size:30px" >Show Appointment: </label><br><br> -->
+	<?php
+	
+if(isset($_POST['submit']))
+{
+		$username=$_SESSION['username'];
+		$timestamp=$_POST['appointment'];
+		$updatequery="update book set Status='Cancelled by Patient' where username='$username' and timestamp= '$timestamp'";
+				if (mysqli_query($conn, $updatequery)) 
+				{
+							echo"<label> Appointment cancelled successfully! </label><br> ";
+						    //echo "Appointment Cancelled successfully..!!<br>"; 
+							header( "Refresh:2; url=ulogin.php");
+
+				} 
+				else
+				{
+					echo "Error: " . $updatequery . "<br>" . mysqli_error($conn);
+				}
+
+}
+?>
+<br><br>
+<label style="font-size:30px" >Show Appointment </label><br><br>
+
+
+
 </body>
 </html>
