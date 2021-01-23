@@ -61,7 +61,7 @@ function newUser()
 		$password=$_POST['pwd'];
 		$prepeat=$_POST['pwdr'];
 		$hash = password_hash($password,PASSWORD_DEFAULT); 
-		$sql = "INSERT INTO Patient (Name, Gender, DOB,Contact,Email,Username,Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$hash'); INSERT INTO user (Username, Password, Role) VALUES ('$username','$hash',1)";
+		$sql = "INSERT INTO patient (Name, Gender, DOB,Contact,Email,Username,Password) VALUES ('$name','$gender','$dob','$contact','$email','$username','$hash'); INSERT INTO user (Username, Password, Role) VALUES ('$username','$hash',1)";
 
 	if (mysqli_multi_query($conn, $sql)) 
 	{
@@ -77,7 +77,7 @@ function checkusername()
 {
 	include 'dbconfig.php';
 	$username=$_POST['username'];
-	$sql= "SELECT * FROM Patient WHERE Username = '$username'";
+	$sql= "SELECT * FROM patient WHERE username = '$username'";
 
 	$result=mysqli_query($conn,$sql);
 
