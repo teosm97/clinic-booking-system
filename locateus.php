@@ -89,7 +89,7 @@ if(isset($_POST['subd']))
 		if(!empty($_POST['doctorname']))
 		{
 			$doctor=$_POST['doctorname'];
-			$sql1 = "Select * from Doctor where UPPER(name) like UPPER('%".$doctor."%')";
+			$sql1 = "Select * from doctor where UPPER(name) like UPPER('%".$doctor."%')";
 			$result1=mysqli_query($conn, $sql1);  
 			while($row1 = mysqli_fetch_array($result1))
 			{
@@ -126,7 +126,7 @@ if(isset($_POST['submit']))
 {
 		include 'dbconfig.php';
 		$cid=$_POST['Clinic'];
-		$sql1 = "Select * from Clinic where cid=$cid";
+		$sql1 = "Select * from clinic where cid=$cid";
 		$result1=mysqli_query($conn, $sql1);  
 		$row1 = mysqli_fetch_array($result1);
 		$sql2 = "Select name,gender,specialization,contact from doctor where did in (select did from doctor_availability where cid=$cid);";
