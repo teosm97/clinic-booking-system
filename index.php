@@ -104,7 +104,7 @@ window.onclick = function(event) {
 				header( "Refresh:1; url=manager/mgrmenu.php"); 
 			}
 			else{
-				header( "Refresh:1; url=admin/mainpage.php"); 
+				header( "Refresh:1; url=Admin/mainpage.php"); 
 			}
 		} 
 		else{
