@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="../main.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+<title>Locate Us</title>
 </head><?php include "../dbconfig.php"; ?>
 <script>
 function getTown(val) {
@@ -43,7 +44,7 @@ function getDoctorday(val) {
 			<li><a href="ulogin.php">Home</a></li>
 		</ul>
 	</div>
-	<form action="locateus.php" method="post">
+	<form action="../locateus.php" method="post">
 	<div class="sucontainer" style="background-color:white">
 		<ul style="background-color:white">			
 			<label style="margin-left:-30px;color:black"><b>Search Doctor</b></label>
