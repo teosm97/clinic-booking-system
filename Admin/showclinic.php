@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 <style>
 table{
     width: 75%;

@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 175%; background-repeat: no-repeat;">
 <ul>
@@ -48,9 +48,6 @@
 <div class="container">
 <center><h1>ADD MANAGER</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-	<label style="color:black"><b>MID: </b></label><br>
-    <input type="number" name="mid" required>
-  <br>
 
   <label style="color:black"><b>Name: </b></label><br>
     <input type="text" placeholder="Enter Name" name="name" minlength="8" maxlength="45" pattern="[A-Za-z\s]{8,45}" required><br>
@@ -108,7 +105,7 @@
 	function newUser()
 	{
 		include '../dbconfig.php';
-			$mid=$_POST['mid'];
+			
 			$name=$_POST['name'];
 			$gender=$_POST['gender'];
 			$dob=$_POST['dob'];
@@ -116,10 +113,11 @@
 			$address=$_POST['address'];
 			$username=$_POST['username'];
 			$password=$_POST['pwd'];
+			$hash = password_hash($password,PASSWORD_DEFAULT); 
 			$region=$_POST['region'];
-			$sql = "INSERT INTO manager (MID, Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$mid','$name','$gender','$dob','$contact','$address','$username','$password','$region') ";
+			$sql = "INSERT INTO manager (Name, Gender, DOB,Contact,Address,Username,Password,region) VALUES ('$name','$gender','$dob','$contact','$address','$username','$hash','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$hash','2')";
 	
-		if (mysqli_query($conn, $sql)) 
+		if (mysqli_multi_query($conn, $sql)) 
 		{
 			echo '<script>alert("Record created successfully!! Refreshing....");
 			window.location.href="addmanager.php";</script>'; 
@@ -130,26 +128,7 @@
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
-	function checkmid()
-	{
-		include '../dbconfig.php';
-		$mid=$_POST['mid'];
-		$sql= "SELECT * FROM manager WHERE MID = '$mid'";
 	
-		$result=mysqli_query($conn,$sql);
-	
-			if(mysqli_num_rows($result)!=0)
-		   {
-				echo '<script>alert("MID already exists!")</script>';
-		   }
-		else 
-			if(isset($_POST['Submit']))
-		{ 
-			newUser();
-		}
-	
-		
-	}
 	function checkusername()
 	{
 		include '../dbconfig.php';
@@ -165,14 +144,14 @@
 		else 
 			if(isset($_POST['Submit']))
 		{ 
-			checkmid();
+			newUser();
 		}
 	
 		
 	}
 	if(isset($_POST['Submit']))
 	{
-		if(!empty($_POST['mid'])&& !empty($_POST['region']) && !empty($_POST['username']) && !empty($_POST['pwd']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
+		if(!empty($_POST['region']) && !empty($_POST['username']) && !empty($_POST['pwd']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
 			checkusername();
 		}else{
 			echo '<script>alert("Please fill in all the columns!")</script>';

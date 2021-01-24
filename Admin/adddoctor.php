@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 205%; background-repeat: no-repeat;">
 <ul>
@@ -49,10 +49,7 @@
 <div class="container">
 <center><h1>ADD DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-	<label style="color:black"><b>DID: </b></label><br>
-		<input type="number" name="did" required>
-	<br>
-
+	
 	<label style="color:black"><b>Name: </b></label><br>
     	<input type="text" placeholder="Enter Name" name="name" minlength="5" maxlength="45" required><br>
 
@@ -125,7 +122,7 @@
 	function newUser()
 	{
 		include '../dbconfig.php';
-			$did=$_POST['did'];
+			
 			$name=$_POST['name'];
 			$gender=$_POST['gender'];
 			$dob=$_POST['dob'];
@@ -135,8 +132,9 @@
 			$address=$_POST['address'];
 			$username=$_POST['username'];
 			$password=$_POST['pwd'];
+			$hash = password_hash($password,PASSWORD_DEFAULT); 
 			$region=$_POST['region'];
-			$sql = "INSERT INTO doctor (DID, Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$did','$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$password','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$password','3')";
+			$sql = "INSERT INTO doctor (Name, Gender, DOB, Experience, Specialization, Contact,Address,Username,Password,Region) VALUES ('$name','$gender','$dob','$experience','$specialization','$contact','$address','$username','$hash','$region');INSERT INTO user (Username, Password, Role) VALUES ('$username','$hash','3')";
 	
 		if (mysqli_multi_query($conn, $sql)) 
 		{
@@ -148,26 +146,7 @@
 		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
-	function checkdid()
-	{
-		include '../dbconfig.php';
-		$did=$_POST['did'];
-		$sql= "SELECT * FROM doctor WHERE DID = '$did'";
 	
-		$result=mysqli_query($conn,$sql);
-	
-			if(mysqli_num_rows($result)!=0)
-		   {
-				echo '<script>alert("DID already exists!")</script>';
-		   }
-		else 
-			if(isset($_POST['Submit']))
-		{ 
-			newUser();
-		}
-	
-		
-	}
 	function checkusername()
 	{
 		include '../dbconfig.php';
@@ -183,14 +162,14 @@
 		else 
 			if(isset($_POST['Submit']))
 		{ 
-			checkdid();
+			newUser();
 		}
 	
 		
 	}
 	if(isset($_POST['Submit']))
 	{
-		if(!empty($_POST['did']) && !empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
+		if(!empty($_POST['username']) && !empty($_POST['pwd'])&& !empty($_POST['region']) &&!empty($_POST['experience']) &&!empty($_POST['specialization']) &&!empty($_POST['name']) &&!empty($_POST['dob'])&& !empty($_POST['gender']) &&!empty($_POST['address']) && !empty($_POST['contact'])){
 			checkusername();
 		} else {
 			echo '<script>alert("Please fill in all the columns!")</script>';

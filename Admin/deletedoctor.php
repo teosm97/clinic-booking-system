@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
@@ -50,9 +50,7 @@
 <div class="container">
 <center><h1>DELETE DOCTOR</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-Enter DID:<center><input type="number" name="did"></center>
-			<button type="submit" name="Submit1">Delete by DID</button>
-			<br><br>---------OR---------<br><br>
+
 Select Name:<br><?php
 				require_once('../dbconfig.php');
 				$doctor_result = $conn->query('SELECT * FROM doctor');
@@ -71,60 +69,28 @@ Select Name:<br><?php
 				?>
 				</select></center>
 				
-				<button type="submit" name="Submit2">Delete by Name</button>
+				<button type="submit" name="Submit2">Delete</button>
 </form>	
 				</div>		
 <?php
 include '../dbconfig.php';
 session_start();
-if(isset($_POST['Submit1']))
-{
-	$did=$_POST['did'];
-	$sql = "DELETE FROM doctor WHERE DID= $did ";
-	$sqlda = "DELETE FROM doctor_availability WHERE DID= $did ";
-	if (mysqli_query($conn, $sql))
-		{
-		echo "Record deleted successfully from doctors table.Refreshing....";
-		header( "Refresh:3; url=deletedoctor.php");
-		}
-	else
-		{
-			echo "Error deleting record: " . mysqli_error($conn);
-		}
-		
-	if (mysqli_query($conn, $sqlda))
-		{
-		echo "Record deleted successfully from doctors_availability table.Refreshing....";
-		header( "Refresh:3; url=deletedoctor.php");
-		}
-	else
-		{
-			echo "Error deleting record: " . mysqli_error($conn);
-		}
-}
+
 if(isset($_POST['Submit2']))
 {
 	$did=$_POST['doctorname'];
-	$sql = "DELETE FROM doctor WHERE did = $did ";
-	$sqlda = "DELETE FROM doctor_availability WHERE DID= $did ";
-	if (mysqli_query($conn, $sql))
+	$sql = "DELETE FROM doctor WHERE did = $did;DELETE FROM doctor_availability WHERE DID= $did";
+	
+	if (mysqli_multi_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:3; url=deletedoctor.php");
+			echo '<script>alert("Record deleted successfully.Refreshing....");
+			window.location.href="deletedoctor.php";</script>';
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			echo '<script>alert("Error deleting record!")</script>';
 		}
-	if (mysqli_query($conn, $sqlda))
-		{
-		echo "Record deleted successfully from doctors_availability table.Refreshing....";
-		header( "Refresh:3; url=deletedoctor.php");
-		}
-	else
-		{
-			echo "Error deleting record: " . mysqli_error($conn);
-		}
+	
 }	
 if(isset($_POST['logout'])){
 		session_unset();

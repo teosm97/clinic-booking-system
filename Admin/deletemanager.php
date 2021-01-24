@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <ul>
@@ -49,9 +49,7 @@
 <div class="container">
 <center><h1>DELETE MANAGER</h1><hr><br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-Enter MID:<center><input type="number" name="mid"></center>
-			<button type="submit" name="Submit1">Delete by DID</button>
-			<br><br>---------OR---------<br><br>
+
 Select Name:<br><?php
 				require_once('../dbconfig.php');
 				$manager_result = $conn->query('select * from manager order by MID ASC');
@@ -63,7 +61,7 @@ Select Name:<br><?php
 				if ($manager_result->num_rows > 0) {
 				while($row = $manager_result->fetch_assoc()) {
 				?>
-				<option value="<?php echo $row["MID"]; ?>"><?php echo "(MID=".$row["MID"].") ".$row["Name"]; ?></option>
+				<option value="<?php echo $row["mid"]; ?>"><?php echo "(mid=".$row["mid"].") ".$row["name"]; ?></option>
 				<?php
 					}
 					}
@@ -76,59 +74,22 @@ Select Name:<br><?php
 <?php
 session_start();
 include '../dbconfig.php';
-if(isset($_POST['Submit1']))
-{
-	$mid=$_POST['mid'];
-	$sql = "DELETE FROM manager WHERE MID= $mid ";
-	$sql1="update clinic set MID=0 where MID=$mid";
-	if (mysqli_query($conn, $sql))
-		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:3; url=deletemanager.php");
-		}
-	else
-		{
-			echo "Error deleting record: " . mysqli_error($conn);
-		}
-				if (mysqli_query($conn, $sql1)) 
-				{
-							echo "<h2>Record reseted in CLINIC TABLE!!</h2>";
-							echo "Please wait...Refreshing...";
-							header( "Refresh:2; url=deletemanager.php");
 
-				} 
-				else
-				{
-					echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
-				}
-				
-}
 if(isset($_POST['Submit2']))
 {
 	$mid=$_POST['managername'];
-	$sql = "DELETE FROM manager WHERE mid = $mid ";
-	$sql1="update clinic set MID=0 where MID=$mid";
-	if (mysqli_query($conn, $sql))
+	$sql = "DELETE FROM manager WHERE mid = $mid;UPDATE clinic set mid=0 where mid=$mid";
+	//$sql1="update clinic set MID=0 where MID=$mid";
+	if (mysqli_multi_query($conn, $sql))
 		{
-		echo "Record deleted successfully.Refreshing....";
-		header( "Refresh:3; url=deletemanager.php");
+			echo '<script>alert("Record deleted successfully.Refreshing....");
+			window.location.href="deletemanager.php";</script>';
 		}
 	else
 		{
-			echo "Error deleting record: " . mysqli_error($conn);
+			echo '<script>alert("Error deleting record!")</script>';
 		}
 				
-				if (mysqli_query($conn, $sql1)) 
-				{
-							echo "<h2>Record reseted in CLINIC TABLE!!</h2>";
-							echo "Please wait...Refreshing...";
-							header( "Refresh:2; url=deletemanager.php");
-
-				} 
-				else
-				{
-					echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
-				}
 
 }	
 if(isset($_POST['logout'])){

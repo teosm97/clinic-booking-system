@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="main.css">
 			<div class="header">
 				<ul>
-					<li style="float:left;border-right:none"><a href="index.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
-					<li><a href="locateus.php">Locate Us</a></li>
-					<li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+					<li style="float:left;border-right:none;margin-bottom:5px"><a href="index.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>
+					<li style="margin-top:7px;border-right:none"><a href="locateus.php">Locate Us</a></li>
+					<li style="margin-top:7px;border-right:none"><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
 				</ul>
 			</div>
-			<div style="margin-top:10%;text-align:center" class="center">
-				<img style="width:400px;height:230px" src="images/skylabs.png">
+			<div style="margin-top:11%;text-align:center" class="center">
+				<img style="width:400px;height:210px" src="images/skylabs.png">
 				<p>Book Your Clinic Appointment Now!</p>
 			</div>	
 
@@ -104,7 +104,7 @@ window.onclick = function(event) {
 				header( "Refresh:1; url=manager/mgrmenu.php"); 
 			}
 			else{
-				header( "Refresh:1; url=admin/mainpage.php"); 
+				header( "Refresh:1; url=Admin/mainpage.php"); 
 			}
 		} 
 		else{

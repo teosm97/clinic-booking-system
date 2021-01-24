@@ -1,7 +1,7 @@
 <html>
 <head>
 <script src="jquerypart.js" type="text/javascript"></script>
-<link rel="stylesheet" href="adminmain.css"> 
+<link rel="stylesheet" href="../Admin/adminmain.css"> 
 <script>
 function getState(val) {
 	$.ajax({
