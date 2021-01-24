@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="main.css">
+<title>Locate Us</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
 </head><?php include "dbconfig.php"; ?>
@@ -36,7 +37,7 @@ function getDoctorday(val) {
 	});
 }
 </script>
-<body style="background-image:url(images/yellowpage.jpg);background-repeat:no-repeat;background-attachment:fixed">
+<body style="background-image:url(images/yellowpage.jpg);height: 110%; background-repeat: no-repeat;" >
 	<div class="header">
 		<ul>
 			<li style="float:left;border-right:none"><a href="ulogin.php" class="logo"><img src="images/cal.png" width="30px" height="30px"><strong> Skylabs </strong>Appointment Booking System</a></li>

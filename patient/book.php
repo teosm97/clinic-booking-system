@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../main.css">
+<title>Book Now</title>
 <style>
 body,html{
 	background-image:url(../images/bookback.jpg);

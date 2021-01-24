@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../main.css">
+<title>View Appointments</title>
 <style>
 table{
     width: 85%;

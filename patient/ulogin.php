@@ -1,6 +1,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="../main.css">
+	<title>Home</title>
 </head>
 <body style ="background-image:url(http://www.dreamtemplate.com/dreamcodes/bg_images/color/c4.jpg);">
 <div class="header">
