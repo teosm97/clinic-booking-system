@@ -100,7 +100,8 @@ li a,
 
 li a:hover,
 .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #333;
+  opacity: 0.5;
 }
 
 li.dropdown {
