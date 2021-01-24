@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Add Doctor</title>
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 205%; background-repeat: no-repeat;">
 <div class="header">

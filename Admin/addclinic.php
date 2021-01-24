@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Add Clinic</title>
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 135%; background-repeat: no-repeat;">
 <div class="header">

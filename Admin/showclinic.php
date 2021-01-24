@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>List of Clinics</title>
 <style>
 table{
     width: 75%;

@@ -2,6 +2,7 @@
 <head>
 <script src="jquerypart.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Delete Manager From Clinic</title>
 <script>
 function getState(val) {
 	$.ajax({

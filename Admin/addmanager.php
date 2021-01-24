@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Add Manager</title>
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 175%; background-repeat: no-repeat;">
 <div class="header">

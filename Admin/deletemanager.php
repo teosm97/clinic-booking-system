@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Delete Manager</title>
 </head>
 <body style="background-image:url(../images/doctordesk.jpg); height: 100%; background-repeat: no-repeat;">
 <div class="header">

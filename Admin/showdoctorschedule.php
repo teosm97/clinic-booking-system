@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="../Admin/adminmain.css"> 
+<title>Doctors' Schedule</title>
 <style>
 table{
     width: 75%;
