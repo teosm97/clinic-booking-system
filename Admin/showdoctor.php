@@ -73,7 +73,7 @@ tr,td{
 <?php
 include '../dbconfig.php';
 session_start();
-$sql="SELECT * FROM Doctor order by DID ASC";
+$sql="SELECT * FROM doctor order by DID ASC";
 $result = mysqli_query($conn,$sql);
 echo "<br><h2>TOTAL DOCTORS: <b>".mysqli_num_rows($result)."</b></h2><br>";
 echo "<table>
