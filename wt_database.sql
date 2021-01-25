@@ -90,7 +90,7 @@ CREATE TABLE `doctor` (
   `contact` bigint(20) NOT NULL,
   `address` varchar(100) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` text(200) NOT NULL,
   `region` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -144,7 +144,7 @@ CREATE TABLE `manager` (
   `contact` bigint(20) NOT NULL,
   `address` varchar(100) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` text(200) NOT NULL,
   `region` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
